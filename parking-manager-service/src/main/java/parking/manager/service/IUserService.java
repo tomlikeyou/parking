@@ -11,4 +11,6 @@ public interface IUserService {
 
 
     public User getUserById(Integer userId);
+
+    int save(User user);
 }

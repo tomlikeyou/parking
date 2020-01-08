@@ -10,4 +10,6 @@ import parking.common.User;
 public interface UserMapper {
 
     User findUserById(Integer userId);
+
+    int saveUser(User user);
 }

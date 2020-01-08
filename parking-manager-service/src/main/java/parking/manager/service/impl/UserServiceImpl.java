@@ -1,6 +1,7 @@
 package parking.manager.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import parking.common.User;
 import parking.manager.mapper.UserMapper;
 import parking.manager.service.IUserService;
@@ -10,6 +11,7 @@ import parking.manager.service.IUserService;
  * Date: created in 2020/1/7 23:16
  * Description:
  */
+@Service
 public class UserServiceImpl implements IUserService {
 
     @Autowired
@@ -18,5 +20,10 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User getUserById(Integer userId) {
         return mapper.findUserById(userId);
+    }
+
+    @Override
+    public int save(User user) {
+        return mapper.saveUser(user);
     }
 }

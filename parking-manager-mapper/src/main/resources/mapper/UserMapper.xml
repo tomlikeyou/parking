@@ -5,4 +5,8 @@
     <select id="findUserById" resultType="user">
         select * from p_user where userId = #{userId}
     </select>
+
+    <insert id="saveUser" parameterType="user">
+        insert into p_user (userName,password,phone) values(#{userName},#{password},#{phone})
+    </insert>
 </mapper>

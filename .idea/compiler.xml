@@ -7,9 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="parking-manager-service" />
-        <module name="parking-manager-mapper" />
-        <module name="parking-manager-web" />
         <module name="parking-common" />
+        <module name="parking-manager-web" />
+        <module name="parking-manager-mapper" />
       </profile>
     </annotationProcessing>
   </component>

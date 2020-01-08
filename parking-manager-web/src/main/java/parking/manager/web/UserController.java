@@ -1,6 +1,9 @@
 package parking.manager.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import parking.common.User;
+import parking.manager.service.IUserService;
 
 /**
  * Author: huang
@@ -9,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 public class UserController {
+
+    @Autowired
+    private IUserService userService;
 
     @RequestMapping("/index")
     public String index() {
@@ -20,9 +26,10 @@ public class UserController {
         return null;
     }
 
-    @GetMapping("/user")
-    public Object find() {
-        return null;
+    @GetMapping("/user/{userId}")
+    public Object find(@PathVariable("userId") Integer userId) {
+        User user = userService.getUserById(userId);
+        return user;
     }
 
     @PostMapping("/user")

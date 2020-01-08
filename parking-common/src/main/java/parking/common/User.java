@@ -1,5 +1,7 @@
 package parking.common;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -7,5 +9,11 @@ import java.io.Serializable;
  * @date 2020/1/8 11:45
  * @Disc
  **/
+@Data
 public class User implements Serializable {
+
+    private Integer userId;
+    private String userName;
+    private String password;
+    private String phone;
 }

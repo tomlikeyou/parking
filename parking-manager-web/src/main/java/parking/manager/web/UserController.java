@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public Object save() {
+    public Object save(@RequestBody User user) {
         return null;
     }
 

@@ -1,7 +1,6 @@
 package parking.manager.web;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Author: huang
@@ -14,5 +13,30 @@ public class UserController {
     @RequestMapping("/index")
     public String index() {
         return "success";
+    }
+
+    @GetMapping(value = "/users")
+    public Object getUsers() {
+        return null;
+    }
+
+    @GetMapping("/user")
+    public Object find() {
+        return null;
+    }
+
+    @PostMapping("/user")
+    public Object save() {
+        return null;
+    }
+
+    @PutMapping("/user")
+    public Object modify() {
+        return null;
+    }
+
+    @DeleteMapping("/user/{id}")
+    public Object delete(@PathVariable("id") Integer id) {
+        return null;
     }
 }

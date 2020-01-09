@@ -34,6 +34,6 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public int delete(Integer userId) {
-        return mapper.delete(userId);
+        return mapper.updateFlag(userId);
     }
 }

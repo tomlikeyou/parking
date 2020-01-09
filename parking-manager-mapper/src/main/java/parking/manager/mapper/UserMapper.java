@@ -15,5 +15,5 @@ public interface UserMapper {
 
     int update(User user);
 
-    int delete(Integer userId);
+    int updateFlag(Integer userId);
 }

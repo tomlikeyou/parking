@@ -3,18 +3,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="parking.manager.mapper.UserMapper">
     <select id="findUserById" resultType="user">
-        select * from p_user where userId = #{userId}
+        select * from user where userId = #{userId}
     </select>
 
     <insert id="saveUser" parameterType="user">
-        insert into p_user (userName,password,phone) values(#{userName},#{password},#{phone})
+        insert into user (userName,password,phone) values(#{userName},#{password},#{phone})
     </insert>
     <update id="update" parameterType="user">
-        update p_user set userName = #{userName},integral = #{integral},password = #{password},remark = #{remark}
+        update user set userName = #{userName},integral = #{integral},password = #{password},remark = #{remark}
         where userId= #{userId}
     </update>
 
-    <delete id="delete">
-        delete from p_user wher userId= #{userId}
-    </delete>
+    <update id="updateFlag">
+        update user set flag =0 where userId=#{userId}
+    </update>
 </mapper>

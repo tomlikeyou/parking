@@ -1,0 +1,18 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="parking.manager.mapper.CarMapper">
+    <select id="selectById" resultType="car">
+        select carId,carType from p_car where carId=#{carId}
+    </select>
+
+    <insert id="insert" parameterType="car">
+        insert into p_car (carType,flag) values(#{carType},1)
+    </insert>
+    <update id="update" parameterType="car">
+        update p_car set carType =#{carType} where carId =#{carId}
+    </update>
+    <update id="updateFlag">
+        update p_car set flag =#{flag} where carId = #{carId}
+    </update>
+</mapper>

@@ -9,4 +9,12 @@
     <insert id="saveUser" parameterType="user">
         insert into p_user (userName,password,phone) values(#{userName},#{password},#{phone})
     </insert>
+    <update id="update" parameterType="user">
+        update p_user set userName = #{userName},integral = #{integral},password = #{password},remark = #{remark}
+        where userId= #{userId}
+    </update>
+
+    <delete id="delete">
+        delete from p_user wher userId= #{userId}
+    </delete>
 </mapper>

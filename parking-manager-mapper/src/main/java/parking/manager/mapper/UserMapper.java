@@ -12,4 +12,8 @@ public interface UserMapper {
     User findUserById(Integer userId);
 
     int saveUser(User user);
+
+    int update(User user);
+
+    int delete(Integer userId);
 }

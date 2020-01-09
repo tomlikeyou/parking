@@ -26,4 +26,14 @@ public class UserServiceImpl implements IUserService {
     public int save(User user) {
         return mapper.saveUser(user);
     }
+
+    @Override
+    public int modify(User user) {
+        return mapper.update(user);
+    }
+
+    @Override
+    public int delete(Integer userId) {
+        return mapper.delete(userId);
+    }
 }

@@ -44,4 +44,11 @@ spring:
     useGlobalDataSourceStat: true
     # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
-
+thymeleaf:
+  mode: LEGACYHTML5
+  encoding: utf-8
+  cache: false
+pagehelper:
+  reasonable: true
+  helper-dialect: mysql
+  support-methods-arguments: true

@@ -38,6 +38,6 @@ public class ShiroLoginController {
                 return  new AjaxResult(ResultCode.FAIL,"未知错误发生",null);
             }
         }
-        return  new AjaxResult<>(ResultCode.SUCCESS,"",subject);
+        return  new AjaxResult<>(ResultCode.SUCCESS,"success",subject);
     }
 }

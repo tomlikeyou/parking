@@ -17,4 +17,6 @@ public interface IUserService {
     int modify(User user);
 
     int delete(Integer userId);
+
+    User getUserByUserName(String userName);
 }

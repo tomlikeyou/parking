@@ -36,4 +36,9 @@ public class UserServiceImpl implements IUserService {
     public int delete(Integer userId) {
         return mapper.updateFlag(userId);
     }
+
+    @Override
+    public User getUserByUserName(String userName) {
+        return mapper.findUserByUserName(userName);
+    }
 }

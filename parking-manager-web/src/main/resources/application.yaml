@@ -1,6 +1,6 @@
 mybatis:
   type-aliases-package: parking.common
-  mapper-locations: classpath*: mapper/*Mapper.xml
+  mapper-locations: classpath*:mapper/*Mapper.xml
   configuration:
     map-underscore-to-camel-case: true
 spring:

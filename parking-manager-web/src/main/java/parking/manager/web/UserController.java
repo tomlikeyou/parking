@@ -1,8 +1,9 @@
 package parking.manager.web;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import parking.common.AjaxResult;
+import parking.common.ResultCode;
 import parking.common.User;
 import parking.manager.service.IUserService;
 
@@ -16,11 +17,6 @@ public class UserController {
 
     @Autowired
     private IUserService userService;
-
-    @RequestMapping("/index")
-    public String index() {
-        return "success";
-    }
 
     @GetMapping(value = "/users")
     public Object getUsers() {
@@ -47,7 +43,7 @@ public class UserController {
 
     @DeleteMapping("/user/{userId}")
     public Object delete(@PathVariable("userId") Integer userId) {
-        int flag  =userService.delete(userId);
-        return null;
+        int flag = userService.delete(userId);
+        return flag > 0 ? new AjaxResult<>(ResultCode.SUCCESS, "success", null) : new AjaxResult<>(ResultCode.FAIL, "fail", null);
     }
 }

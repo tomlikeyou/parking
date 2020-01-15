@@ -71,7 +71,7 @@ public class MyRealm extends AuthorizingRealm {
         }
         ByteSource salt = ByteSource.Util.bytes(username);
 
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(username, user.getPassword(), salt, getName());
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPassword(), salt, getName());
         return info;
     }
 }

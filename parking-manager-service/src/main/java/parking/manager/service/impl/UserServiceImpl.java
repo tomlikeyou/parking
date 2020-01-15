@@ -1,5 +1,7 @@
 package parking.manager.service.impl;
 
+import org.apache.shiro.crypto.hash.SimpleHash;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import parking.common.User;
@@ -24,6 +26,15 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public int save(User user) {
+        //加密算法
+        String hashAlgorithmName = "MD5";
+        //加密次数
+        int hashIterations =1024;
+        String pwd = user.getPassword();
+        //盐值加密
+        ByteSource salt = ByteSource.Util.bytes(user.getUserName());
+        SimpleHash simpleHash = new SimpleHash(hashAlgorithmName, pwd, salt, hashIterations);
+        user.setPassword(simpleHash.toString());
         return mapper.saveUser(user);
     }
 
@@ -40,5 +51,15 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User getUserByUserName(String userName) {
         return mapper.findUserByUserName(userName);
+    }
+
+    public static void main(String[] args) {
+        String hashAlgorithmName = "MD5";
+        //加密次数
+        int hashIterations =1024;
+        String pwd="123456";
+        ByteSource salt = ByteSource.Util.bytes("lisi");
+        SimpleHash simpleHash = new SimpleHash(hashAlgorithmName, pwd, salt, hashIterations);
+        System.out.println(simpleHash.toString());
     }
 }

@@ -31,8 +31,9 @@ public class UserController {
 
     @PostMapping("/user")
     public Object save(@RequestBody User user) {
+        System.out.println(user);
         int flag = userService.save(user);
-        return null;
+        return flag > 0 ? new AjaxResult<>(ResultCode.SUCCESS, "success", null) : new AjaxResult<>(ResultCode.FAIL, "fail", null);
     }
 
     @PutMapping("/user")

@@ -17,12 +17,10 @@ import java.util.Map;
  **/
 @Configuration
 public class ShiroConfig {
-
-
     /*
     创建shirofilterfactorybean
      */
-    @Bean()
+    @Bean
     public ShiroFilterFactoryBean getShiroFilterFactoryBean(@Qualifier("securityManager") DefaultWebSecurityManager securityManager) {
         ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
         bean.setSecurityManager(securityManager);
@@ -66,7 +64,7 @@ public class ShiroConfig {
     public HashedCredentialsMatcher getHashedCredentialsMatcher() {
         HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
         hashedCredentialsMatcher.setHashAlgorithmName("MD5");
-        hashedCredentialsMatcher.setHashIterations(3);
+        hashedCredentialsMatcher.setHashIterations(1024);
         return hashedCredentialsMatcher;
     }
 }

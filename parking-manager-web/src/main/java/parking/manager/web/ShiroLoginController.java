@@ -25,11 +25,13 @@ public class ShiroLoginController {
     @RequestMapping("/login")
     @ResponseBody
     public Object login(@RequestBody User user){
+        System.out.println(user.toString());
         Subject subject = SecurityUtils.getSubject();
         if(!subject.isAuthenticated()){
             UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(),user.getPassword());
             try{
                 subject.login(token);
+
             }catch (UnknownAccountException uae){
                 return  new AjaxResult(ResultCode.FAIL,"账户不存在",null);
             }catch (IncorrectCredentialsException ice){
@@ -38,6 +40,6 @@ public class ShiroLoginController {
                 return  new AjaxResult(ResultCode.FAIL,"未知错误发生",null);
             }
         }
-        return  new AjaxResult<>(ResultCode.SUCCESS,"success",subject);
+        return  new AjaxResult<>(ResultCode.SUCCESS,"success",(User)subject.getPrincipal());
     }
 }

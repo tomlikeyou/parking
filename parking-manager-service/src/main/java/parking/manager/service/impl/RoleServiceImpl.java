@@ -19,7 +19,7 @@ public class RoleServiceImpl implements IRoleService {
     private RoleMapper mapper;
 
     @Override
-    public List<Role> getRolesByUserName(String userName) {
-        return mapper.getRolesByUserName(userName);
+    public List<Role> getRolesByUserName(Integer userId) {
+        return mapper.getRolesByUserName(userId);
     }
 }

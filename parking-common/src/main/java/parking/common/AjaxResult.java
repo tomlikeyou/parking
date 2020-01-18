@@ -13,8 +13,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AjaxResult<T> {
+
     private ResultCode code;
+
     private String message;
+
     private T data;
 
 }

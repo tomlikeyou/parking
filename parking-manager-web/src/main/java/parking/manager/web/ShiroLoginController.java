@@ -25,7 +25,6 @@ public class ShiroLoginController {
     @RequestMapping("/login")
     @ResponseBody
     public Object login(@RequestBody User user){
-        System.out.println(user.toString());
         Subject subject = SecurityUtils.getSubject();
         if(!subject.isAuthenticated()){
             UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(),user.getPassword());
@@ -33,13 +32,13 @@ public class ShiroLoginController {
                 subject.login(token);
 
             }catch (UnknownAccountException uae){
-                return  new AjaxResult(ResultCode.FAIL,"账户不存在",null);
+                return  new AjaxResult(ResultCode.LOGIN_FAIL,"账户不存在",null);
             }catch (IncorrectCredentialsException ice){
-                return  new AjaxResult(ResultCode.FAIL,"密码不正确",null);
+                return  new AjaxResult(ResultCode.LOGIN_FAIL,"密码不正确",null);
             }catch (AuthenticationException e){
-                return  new AjaxResult(ResultCode.FAIL,"未知错误发生",null);
+                return  new AjaxResult(ResultCode.LOGIN_FAIL,"未知错误发生",null);
             }
         }
-        return  new AjaxResult<>(ResultCode.SUCCESS,"success",(User)subject.getPrincipal());
+        return  new AjaxResult<>(ResultCode.LOGIN_SUCCESS,"success",(User)subject.getPrincipal());
     }
 }

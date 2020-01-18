@@ -32,6 +32,11 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
         <!--shiro集成spring依赖-->
         <dependency>
             <groupId>org.apache.shiro</groupId>

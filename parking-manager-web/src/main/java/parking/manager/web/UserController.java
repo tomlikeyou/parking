@@ -33,7 +33,7 @@ public class UserController {
     public Object save(@RequestBody User user) {
         System.out.println(user);
         int flag = userService.save(user);
-        return flag > 0 ? new AjaxResult<>(ResultCode.SUCCESS, "success", null) : new AjaxResult<>(ResultCode.FAIL, "fail", null);
+        return flag > 0 ? new AjaxResult<>(ResultCode.SAVE_SUCCESS, "success", null) : new AjaxResult<>(ResultCode.SAVE_FAIL, "fail", null);
     }
 
     @PutMapping("/user")
@@ -45,6 +45,6 @@ public class UserController {
     @DeleteMapping("/user/{userId}")
     public Object delete(@PathVariable("userId") Integer userId) {
         int flag = userService.delete(userId);
-        return flag > 0 ? new AjaxResult<>(ResultCode.SUCCESS, "success", null) : new AjaxResult<>(ResultCode.FAIL, "fail", null);
+        return flag > 0 ? new AjaxResult<>(ResultCode.DELETE_SUCCESS, "success", null) : new AjaxResult<>(ResultCode.DELETE_FAIL, "fail", null);
     }
 }

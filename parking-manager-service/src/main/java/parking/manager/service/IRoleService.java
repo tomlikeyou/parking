@@ -11,5 +11,5 @@ import java.util.List;
  **/
 public interface IRoleService {
 
-    List<Role> getRolesByUserName(String userName);
+    List<Role> getRolesByUserName(Integer userId);
 }

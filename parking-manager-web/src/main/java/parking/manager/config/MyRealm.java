@@ -36,18 +36,25 @@ public class MyRealm extends AuthorizingRealm {
     @Autowired
     private IMenuService menuService;
 
+    /*
+    授权
+     */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        String userName = (String) principalCollection.getPrimaryPrincipal();
+        User user = (User) principalCollection.getPrimaryPrincipal();
+        System.out.println("授权用户" + user.toString());
 
-        List<Role> roles = roleService.getRolesByUserName(userName);
+        List<Role> roles = roleService.getRolesByUserName(user.getUserId());
+
         Set<String> roleNames = roles.stream().map(Role::getRoleName).collect(Collectors.toSet());
 
         Set<Integer> roleIds = roles.stream().map(Role::getRoleId).collect(Collectors.toSet());
         Set<String> menuPerms = Collections.synchronizedSet(new HashSet<>());
         for (Integer roleId : roleIds) {
             List<Menu> list = menuService.findMenusByRoleId(roleId);
-            list.stream().map(Menu::getPerms).forEach(perm->{menuPerms.add(perm);});
+            list.stream().map(Menu::getPerms).forEach(perm -> {
+                menuPerms.add(perm);
+            });
         }
 
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
@@ -69,6 +76,7 @@ public class MyRealm extends AuthorizingRealm {
         } else if (user.getStatus() == '0') {
             throw new LockedAccountException("用户已锁定");
         }
+
         ByteSource salt = ByteSource.Util.bytes(username);
 
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPassword(), salt, getName());

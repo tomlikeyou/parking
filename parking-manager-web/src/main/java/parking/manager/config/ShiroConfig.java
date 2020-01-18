@@ -29,7 +29,7 @@ public class ShiroConfig {
         //登录不需要权限
         map.put("/login", "anon");
         map.put("/user/**","roles[guest]");
-        map.put("/car","roles[admin]");
+        map.put("/druid/**","roles[admin]");
         map.put("/*", "authc");
 
         bean.setUnauthorizedUrl("unauth");

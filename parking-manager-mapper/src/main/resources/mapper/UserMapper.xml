@@ -13,11 +13,11 @@
         insert into user (userName,password,phone) values(#{userName},#{password},#{phone})
     </insert>
     <update id="update" parameterType="user">
-        update user set userName = #{userName},integral = #{integral},password = #{password},remark = #{remark}
+        update user set userName = #{userName},integral = #{integral},password = #{password},phone=#{phone},remark = #{remark}
         where userId= #{userId}
     </update>
 
     <update id="updateFlag">
-        update user set flag =0 where userId=#{userId}
+        update user set deleteFlag ='1' where userId=#{userId}
     </update>
 </mapper>

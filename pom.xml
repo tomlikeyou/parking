@@ -14,6 +14,12 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.10.RELEASE</version>
     </parent>
+    <!--项目编码和版本号-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
 
     <modules>
         <module>parking-common</module>
@@ -55,6 +61,7 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.46</version>
         </dependency>
+        <!--阿里数据源-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>

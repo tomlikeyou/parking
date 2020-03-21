@@ -3,6 +3,8 @@ package parking.common;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author huang
@@ -15,9 +17,6 @@ public class Role {
     private String roleName;
     private Integer status;
     private Integer deleteFlag;
-    private Date createTime;
-    private String createBy;
-    private Date updateTime;
-    private String updateBy;
     private String remark;
+    private List<Menu> menuList;
 }

@@ -8,7 +8,7 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/parking?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/car_tax?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
     type: com.alibaba.druid.pool.DruidDataSource
 #    初始化池数目
     initSize: 5
@@ -48,7 +48,9 @@ thymeleaf:
   mode: LEGACYHTML5
   encoding: utf-8
   cache: false
+#pagehelper配置
 pagehelper:
   reasonable: true
   helper-dialect: mysql
   support-methods-arguments: true
+  params: count=countSql

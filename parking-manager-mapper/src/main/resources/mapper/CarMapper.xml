@@ -2,17 +2,29 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="parking.manager.mapper.CarMapper">
+
+    <select id="findCars" resultType="car">
+        select carId,carType,userId from car
+    </select>
     <select id="selectById" resultType="car">
-        select carId,carType from p_car where carId=#{carId}
+        select carId,carType from t_car where carId=#{carId}
     </select>
 
-    <insert id="insert" parameterType="car">
-        insert into p_car (carType,flag) values(#{carType},1)
+    <select id="findCarsByMap" parameterType="map" resultType="car">
+        SELECT * FROM t_car
+        <where>
+            <if test="carName!=null and carName!=''">
+                carName = #{carName}
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="car" useGeneratedKeys="true" keyProperty="carId">
+        insert into t_car (carType) values(#{carType})
     </insert>
     <update id="update" parameterType="car">
-        update p_car set carType =#{carType} where carId =#{carId}
+        update t_car set carType =#{carType},remark=#{remark} where carId =#{carId}
     </update>
     <update id="updateFlag">
-        update p_car set flag =#{flag} where carId = #{carId}
+        update t_car set deleteFlag ='1' where carId = #{carId}
     </update>
 </mapper>

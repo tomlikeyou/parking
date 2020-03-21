@@ -2,10 +2,27 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="parking.manager.mapper.MenuMapper">
+
+    <select id="findMenus" resultType="menu">
+        select menuId,menuName,parentId,url,icon,menuType,perms,orderNum from t_menu
+    </select>
+    <select id="findMenuById" resultType="menu">
+        select * from menu where menuId=#{menuId}
+    </select>
     <select id="findMenusByRoleId" resultType="menu">
-        select m.* from sys_role r
-                left  join sys_role_menu rm on r.roleId =rm.rId
-                left join sys_menu m on rm.menuId=m.menuId
+        select m.* from t_role r
+                left  join t_role_menu rm on r.roleId =rm.roleId
+                left join t_menu m on rm.menuId=m.menuId
                 where r.roleId=#{roleId}
     </select>
+
+    <insert id="save" parameterType="menu">
+        insert  into t_menu (menu)
+    </insert>
+    <update id="modifyMenu" parameterType="menu">
+        update menu set menuName=#{menuName}, parentId=#{parentId} where menuId=#{menuId}
+    </update>
+    <delete id="delete">
+        delete from menu where menuId=#{menuId}
+    </delete>
 </mapper>

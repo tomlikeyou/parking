@@ -3,21 +3,55 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="parking.manager.mapper.UserMapper">
     <select id="findUserByUserName" resultType="user">
-        select * from user where userName =#{userName}
+        select * from t_user where userName = #{userName}
     </select>
+    <select id="findUsersByMap" parameterType="map" resultType="user">
+        select * from t_user
+        <where>
+            <if test="userName!=null and userName!=''">
+                userName like concat('%',#{userName},'%')
+            </if>
+            <if test="deleteFlag!=null and deleteFlag!='-1'">
+                AND deleteFlag = #{deleteFlag}
+            </if>
+            <if test="phone!=null and phone!=''">
+                AND phone like concat('%',#{phone},'%')
+            </if>
+        </where>
+    </select>
+
     <select id="findUserById" resultType="user">
-        select * from user where userId = #{userId}
+        select * from t_user where userId = #{userId}
     </select>
 
     <insert id="saveUser" parameterType="user">
-        insert into user (userName,password,phone) values(#{userName},#{password},#{phone})
+        insert into t_user (userName,password,phone) values(#{userName},#{password},#{phone})
     </insert>
+
+    <update id="updateInfo" parameterType="user">
+        update  t_user set phone =#{phone},password=#{password}, remark =#{remark} where userId =#{userId}
+    </update>
     <update id="update" parameterType="user">
-        update user set userName = #{userName},integral = #{integral},password = #{password},phone=#{phone},remark = #{remark}
+        update t_user set
+        <if test="userName!=null and userName!=''">
+            userName = #{userName},
+        </if>
+        <if test="password!=null and password!=''">
+            password = #{password},
+        </if>
+        <if test="phone!=null and phone!=''">
+            phone=#{phone},
+        </if>
+        <if test="remark!=null and remark!=''">
+            remark = #{remark},
+        </if>
+        <if test="userImage!=null and userImage!=''">
+            userImage=#{userImage}
+        </if>
         where userId= #{userId}
     </update>
 
     <update id="updateFlag">
-        update user set deleteFlag ='1' where userId=#{userId}
+        update t_user set deleteFlag ='0' where userId=#{userId}
     </update>
 </mapper>

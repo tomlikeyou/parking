@@ -3,7 +3,9 @@ package parking.common;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author huang
@@ -26,4 +28,5 @@ public class Menu implements Serializable {
     private Date createTime;
     private String remark;
     private String perms;
+    private List<Menu> childrenList=new ArrayList<>();
 }

@@ -3,6 +3,7 @@ package parking.manager.config;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
@@ -44,7 +45,7 @@ public class MyRealm extends AuthorizingRealm {
         User user = (User) principalCollection.getPrimaryPrincipal();
         System.out.println("授权用户" + user.toString());
 
-        List<Role> roles = roleService.getRolesByUserName(user.getUserId());
+        List<Role> roles = roleService.getRolesByUserId(user.getUserId());
 
         Set<String> roleNames = roles.stream().map(Role::getRoleName).collect(Collectors.toSet());
 
@@ -52,8 +53,16 @@ public class MyRealm extends AuthorizingRealm {
         Set<String> menuPerms = Collections.synchronizedSet(new HashSet<>());
         for (Integer roleId : roleIds) {
             List<Menu> list = menuService.findMenusByRoleId(roleId);
+
             list.stream().map(Menu::getPerms).forEach(perm -> {
-                menuPerms.add(perm);
+                if (perm != null) {
+                    menuPerms.add(perm);
+                }
+            });
+            list.stream().forEach(menu -> {
+                menu.getChildrenList().stream().map(Menu::getPerms).forEach(perm -> {
+                    menuPerms.add(perm);
+                });
             });
         }
 
@@ -73,7 +82,7 @@ public class MyRealm extends AuthorizingRealm {
         User user = userService.getUserByUserName(username);
         if (user == null) {
             throw new UnknownAccountException("账户不存在");
-        } else if (user.getStatus() == '0') {
+        } else if (user.getDeleteFlag() == '0') {
             throw new LockedAccountException("用户已锁定");
         }
 
@@ -81,5 +90,11 @@ public class MyRealm extends AuthorizingRealm {
 
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPassword(), salt, getName());
         return info;
+    }
+
+    public static void main(String[] args) {
+        String name = "admin";
+        SimpleHash hash = new SimpleHash("md5", "root", name, 1024);
+        System.out.println(hash.toString());
     }
 }

@@ -2,6 +2,9 @@ package parking.manager.service;
 
 import parking.common.User;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Author: huang
  * Date: created in 2020/1/7 23:16
@@ -19,4 +22,6 @@ public interface IUserService {
     int delete(Integer userId);
 
     User getUserByUserName(String userName);
+
+    List<User> findUsersByMap(Map<String, Object> paramMap);
 }

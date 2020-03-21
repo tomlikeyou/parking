@@ -8,6 +8,9 @@ import parking.common.User;
 import parking.manager.mapper.UserMapper;
 import parking.manager.service.IUserService;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Author: huang
  * Date: created in 2020/1/7 23:16
@@ -29,7 +32,7 @@ public class UserServiceImpl implements IUserService {
         //加密算法
         String hashAlgorithmName = "MD5";
         //加密次数
-        int hashIterations =1024;
+        int hashIterations = 1024;
         String pwd = user.getPassword();
         //盐值加密
         ByteSource salt = ByteSource.Util.bytes(user.getUserName());
@@ -40,7 +43,13 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public int modify(User user) {
-        return mapper.update(user);
+        //加密算法
+        String hashAlgorithmName = "MD5";
+        //加密次数
+        int hashIterations = 1024;
+        SimpleHash hash = new SimpleHash(hashAlgorithmName, user.getPassword(), ByteSource.Util.bytes(user.getUserName()), hashIterations);
+        user.setPassword(hash.toString());
+        return mapper.updateInfo(user);
     }
 
     @Override
@@ -53,11 +62,16 @@ public class UserServiceImpl implements IUserService {
         return mapper.findUserByUserName(userName);
     }
 
+    @Override
+    public List<User> findUsersByMap(Map<String, Object> paramMap) {
+        return mapper.findUsersByMap(paramMap);
+    }
+
     public static void main(String[] args) {
         String hashAlgorithmName = "MD5";
         //加密次数
-        int hashIterations =1024;
-        String pwd="123456";
+        int hashIterations = 1024;
+        String pwd = "123456";
         ByteSource salt = ByteSource.Util.bytes("lisi");
         SimpleHash simpleHash = new SimpleHash(hashAlgorithmName, pwd, salt, hashIterations);
         System.out.println(simpleHash.toString());

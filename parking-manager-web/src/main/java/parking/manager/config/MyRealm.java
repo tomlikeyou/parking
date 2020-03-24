@@ -37,13 +37,14 @@ public class MyRealm extends AuthorizingRealm {
     @Autowired
     private IMenuService menuService;
 
-    /*
-    授权
+    /**
+     * 授权
+     * @param principalCollection
+     * @return
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         User user = (User) principalCollection.getPrimaryPrincipal();
-        System.out.println("授权用户" + user.toString());
 
         List<Role> roles = roleService.getRolesByUserId(user.getUserId());
 
@@ -72,8 +73,11 @@ public class MyRealm extends AuthorizingRealm {
         return info;
     }
 
-    /*
-     *@description:认证
+    /**
+     * 认证
+     * @param authenticationToken
+     * @return
+     * @throws AuthenticationException
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {

@@ -13,8 +13,11 @@
     <select id="findCarsByMap" parameterType="map" resultType="car">
         SELECT * FROM t_car
         <where>
+            <if test="carType!=null and carType!=''">
+                carType =#{carType}
+            </if>
             <if test="carName!=null and carName!=''">
-                carName = #{carName}
+              AND   carName = #{carName}
             </if>
         </where>
     </select>

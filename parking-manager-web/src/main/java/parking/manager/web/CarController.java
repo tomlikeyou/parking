@@ -3,6 +3,7 @@ package parking.manager.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import parking.common.AjaxResult;
+import parking.common.AjaxResultBuilder;
 import parking.common.Car;
 import parking.common.ResultCode;
 import parking.manager.service.ICarService;
@@ -23,17 +24,21 @@ public class CarController {
 
     @GetMapping("/cars")
     public Object getCars(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
-                          @RequestParam(value = "pageSize", required = false) Integer pageSize) {
+                          @RequestParam(value = "pageSize", required = false) Integer pageSize,
+                          @RequestParam(value = "carTypeId",required = false) Integer carTypeId) {
         Map<String, Object> map = new HashMap<>(16);
         map.put("pageNum", pageNum);
         map.put("pageSize", pageSize);
+        map.put("carTypeId",carTypeId);
         return carService.findCarsByMap(map);
     }
 
     @PostMapping("/car")
     public Object save(@RequestBody Car car) {
         int flag = carService.save(car);
-        return flag > 0 ? new AjaxResult<>(ResultCode.SAVE_SUCCESS, "save success", null) : new AjaxResult<>(ResultCode.SAVE_FAIL, "save error", null);
+        return flag > 0 ?
+                AjaxResultBuilder.build(ResultCode.SAVE_SUCCESS, ResultCode.findMessageByCode(ResultCode.SAVE_SUCCESS), flag)
+                : AjaxResultBuilder.build(ResultCode.SAVE_FAIL, ResultCode.findMessageByCode(ResultCode.SAVE_FAIL), null);
     }
 
     @GetMapping("/car/{carId}")
@@ -45,12 +50,18 @@ public class CarController {
     @PutMapping(value = "/car")
     public Object modify(@RequestBody Car car) {
         int flag = carService.modify(car);
-        return flag > 0 ? new AjaxResult<>(ResultCode.EDIT_SUCCESS, "MODIFY SUCCESS", flag) : new AjaxResult<>(ResultCode.EDIT_FAIL, "MODIFY FAILURE", null);
+        return flag > 0 ?
+                AjaxResultBuilder.build(ResultCode.UPLOAD_SUCCESS, ResultCode.findMessageByCode(ResultCode.UPLOAD_SUCCESS), flag)
+                : AjaxResultBuilder.build(ResultCode.UPLOAD_FAIL, ResultCode.findMessageByCode(ResultCode.UPLOAD_FAIL), null);
+
     }
 
     @DeleteMapping(value = "/car/{carId}")
     public Object delete(@PathVariable(value = "carId") Integer carId) {
         int flag = carService.del(carId);
-        return flag > 0 ? new AjaxResult<>(ResultCode.DELETE_SUCCESS, "DELETE SUCCESS", flag) : new AjaxResult<>(ResultCode.DELETE_FAIL, "DELETE FAILTURE", null);
+        return flag > 0 ?
+                AjaxResultBuilder.build(ResultCode.DELETE_SUCCESS, ResultCode.findMessageByCode(ResultCode.DELETE_SUCCESS), flag)
+                : AjaxResultBuilder.build(ResultCode.DELETE_FAIL, ResultCode.findMessageByCode(ResultCode.DELETE_FAIL), null);
+
     }
 }

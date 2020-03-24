@@ -3,6 +3,8 @@ package parking.common;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
+
 /**
  * @author huang
  * @date 2020/1/9 10:23
@@ -10,9 +12,17 @@ import java.io.Serializable;
  **/
 @Data
 public class Car implements Serializable {
-
     private Integer carId;
-    private String carType;
-    private Integer deleteFlag;
-    private String remark;
+    private String carName;
+    private String carNumber;
+    private Integer carTypeId;
+    private String carImage;
+    private String carColor;
+    private String carRemark;
+    private Character taxStatus;
+    private Date purchaseDate;
+    private Integer carCount;
+    private Integer dayPrice;
+    private Integer monthPrice;
+    private String carArea;
 }

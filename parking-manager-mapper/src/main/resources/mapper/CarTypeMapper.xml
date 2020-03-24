@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="parking.manager.mapper.CarTypeMapper">
+    <resultMap id="carTypeWithCars" type="carType">
+        <id property="typeId" column="typeId"></id>
+        <result property="typeName" column="typeName"></result>
+        <result property="inventory" column="inventory"></result>
+        <collection property="carList" ofType="parking.common.Car">
+            <id property="carId" column="carId"></id>
+            <result property="carName" column="carName"></result>
+            <result property="carTypeId" column="carTypeId"></result>
+            <result property="carColor" column="carColor"></result>
+            <result property="carRemark" column="carRemark"></result>
+            <result property="carCount" column="carCount"></result>
+            <result property="monthPrice" column="monthPrice"></result>
+        </collection>
+    </resultMap>
+    <select id="findCarsWithMap" parameterType="map" resultMap="carTypeWithCars">
+        select ct.typeId,ct.typeName ,ct.inventory,
+        car.carId,car.carName,car.carTypeId,car.carColor,car.carRemark,car.carCount,car.monthPrice
+        from t_car_type ct left join t_car car
+        on ct.typeId = car.carTypeId
+        <where>
+            <if test="carTypeId!=null and carTypeId != 0">
+                AND ct.typeId = #{carTypeId}
+            </if>
+        </where>
+    </select>
+</mapper>

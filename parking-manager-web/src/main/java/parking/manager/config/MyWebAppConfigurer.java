@@ -1,7 +1,7 @@
 package parking.manager.config;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -10,10 +10,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * Description:
  * @author 24626
  */
-//@Configuration
-//public class MyWebAppConfigurer implements WebMvcConfigurer {
-//    @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler("/images/**").addResourceLocations("file:C:\\Users\\24626\\AppData\\Local\\Temp\\tomcat-docbase.6461294577867241249.8080\\upload\\");
-//    }
-//}
+@Configuration
+public class MyWebAppConfigurer implements WebMvcConfigurer {
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(new DateConverter());
+    }
+}

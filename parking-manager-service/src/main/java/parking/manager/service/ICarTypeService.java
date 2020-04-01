@@ -14,4 +14,11 @@ import java.util.Map;
 public interface ICarTypeService {
 
     List<CarType> findCarsWithMap(Map<String, Object> map);
+
+    /**
+     *
+     * @return carTypeList
+     */
+    List<CarType> findCarTypes();
+
 }

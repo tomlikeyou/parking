@@ -1,0 +1,8 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="parking.manager.mapper.OrderMapper">
+    <select id="findOrderByKey" resultType="order">
+        SELECT * FROM t_user_car where
+    </select>
+</mapper>

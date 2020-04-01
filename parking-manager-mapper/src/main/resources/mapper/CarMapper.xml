@@ -17,7 +17,10 @@
                 carType =#{carType}
             </if>
             <if test="carName!=null and carName!=''">
-              AND   carName = #{carName}
+                AND carName = #{carName}
+            </if>
+            <if test="carTypeId!=nulupdateFlagl and carTypeId!= 0">
+                AND carTypeId = #{carTypeId}
             </if>
         </where>
     </select>
@@ -25,9 +28,25 @@
         insert into t_car (carType) values(#{carType})
     </insert>
     <update id="update" parameterType="car">
-        update t_car set carType =#{carType},remark=#{remark} where carId =#{carId}
+        update t_car set
+        <if test="carName!=null and carName!=''">
+            carName = #{carName},
+        </if>
+        <if test="carColor!=null and carColor!=''">
+            carColor = #{carColor},
+        </if>
+        <if test="carNumber!=null and carNumber!=''">
+            carNumber =#{carNumber},
+        </if>
+        <if test="purchaseDate!=null">
+            purchaseDate = #{purchaseDate},
+        </if>
+        <if test="carRemark!=null and carRemark!=''">
+            carRemark =#{carRemark}
+        </if>
+        where carId =#{carId}
     </update>
     <update id="updateFlag">
-        update t_car set deleteFlag ='1' where carId = #{carId}
+        update t_car set taxStatus ='0' where carId = #{carId}
     </update>
 </mapper>

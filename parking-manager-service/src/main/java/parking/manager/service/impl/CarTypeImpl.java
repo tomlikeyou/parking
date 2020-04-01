@@ -24,4 +24,9 @@ public class CarTypeImpl implements ICarTypeService {
     public List<CarType> findCarsWithMap(Map<String, Object> map) {
      return  carTypeMapper.findCarsWithMap(map);
     }
+
+    @Override
+    public List<CarType> findCarTypes() {
+        return carTypeMapper.findCarTypes();
+    }
 }

@@ -24,12 +24,12 @@ public class CarController {
 
     @GetMapping("/cars")
     public Object getCars(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
-                          @RequestParam(value = "pageSize", required = false) Integer pageSize,
-                          @RequestParam(value = "carTypeId",required = false) Integer carTypeId) {
+                          @RequestParam(value = "pageSize") Integer pageSize,
+                          @RequestParam(value = "carTypeId") Integer carTypeId) {
         Map<String, Object> map = new HashMap<>(16);
         map.put("pageNum", pageNum);
         map.put("pageSize", pageSize);
-        map.put("carTypeId",carTypeId);
+        map.put("carTypeId", carTypeId);
         return carService.findCarsByMap(map);
     }
 
@@ -51,8 +51,8 @@ public class CarController {
     public Object modify(@RequestBody Car car) {
         int flag = carService.modify(car);
         return flag > 0 ?
-                AjaxResultBuilder.build(ResultCode.UPLOAD_SUCCESS, ResultCode.findMessageByCode(ResultCode.UPLOAD_SUCCESS), flag)
-                : AjaxResultBuilder.build(ResultCode.UPLOAD_FAIL, ResultCode.findMessageByCode(ResultCode.UPLOAD_FAIL), null);
+                AjaxResultBuilder.build(ResultCode.EDIT_SUCCESS, ResultCode.findMessageByCode(ResultCode.EDIT_SUCCESS), flag)
+                : AjaxResultBuilder.build(ResultCode.EDIT_FAIL, ResultCode.findMessageByCode(ResultCode.EDIT_FAIL), null);
 
     }
 

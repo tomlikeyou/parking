@@ -6,19 +6,25 @@
         <id property="typeId" column="typeId"></id>
         <result property="typeName" column="typeName"></result>
         <result property="inventory" column="inventory"></result>
+        <result property="carTypeImage" column="carTypeImage"></result>
         <collection property="carList" ofType="parking.common.Car">
             <id property="carId" column="carId"></id>
             <result property="carName" column="carName"></result>
             <result property="carTypeId" column="carTypeId"></result>
+            <result property="carNumber" column="carNumber"></result>
             <result property="carColor" column="carColor"></result>
             <result property="carRemark" column="carRemark"></result>
             <result property="carCount" column="carCount"></result>
             <result property="monthPrice" column="monthPrice"></result>
         </collection>
     </resultMap>
+
+    <select id="findCarTypes" resultType="carType">
+        select * from t_car_type
+    </select>
     <select id="findCarsWithMap" parameterType="map" resultMap="carTypeWithCars">
-        select ct.typeId,ct.typeName ,ct.inventory,
-        car.carId,car.carName,car.carTypeId,car.carColor,car.carRemark,car.carCount,car.monthPrice
+        select ct.typeId,ct.typeName ,ct.inventory,ct.carTypeImage,
+        car.carId,car.carName,car.carNumber,car.carTypeId,car.carColor,car.carRemark,car.carCount,car.monthPrice
         from t_car_type ct left join t_car car
         on ct.typeId = car.carTypeId
         <where>

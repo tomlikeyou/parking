@@ -9,12 +9,20 @@ import java.util.Map;
  * Author: huang
  * Date: created in 2020/3/23 13:33
  * Description:
+ *
  * @author 24626
  */
 public interface CarTypeMapper {
 
     /**
-     * @return  carTypeList
+     * @return carTypeList with map
      */
-    public List<CarType> findCarsWithMap(Map<String,Object> map);
+    public List<CarType> findCarsWithMap(Map<String, Object> map);
+
+    /**
+     *
+     * @return carTypeList
+     */
+    public List<CarType> findCarTypes();
+
 }

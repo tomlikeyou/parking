@@ -16,5 +16,6 @@ public class CarType {
     private Integer typeId;
     private String typeName;
     private Integer inventory;
+    private String carTypeImage;
     private List<Car> carList;
 }

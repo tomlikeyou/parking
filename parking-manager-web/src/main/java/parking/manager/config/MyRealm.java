@@ -45,16 +45,12 @@ public class MyRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         User user = (User) principalCollection.getPrimaryPrincipal();
-
         List<Role> roles = roleService.getRolesByUserId(user.getUserId());
-
         Set<String> roleNames = roles.stream().map(Role::getRoleName).collect(Collectors.toSet());
-
         Set<Integer> roleIds = roles.stream().map(Role::getRoleId).collect(Collectors.toSet());
         Set<String> menuPerms = Collections.synchronizedSet(new HashSet<>());
         for (Integer roleId : roleIds) {
             List<Menu> list = menuService.findMenusByRoleId(roleId);
-
             list.stream().map(Menu::getPerms).forEach(perm -> {
                 if (perm != null) {
                     menuPerms.add(perm);

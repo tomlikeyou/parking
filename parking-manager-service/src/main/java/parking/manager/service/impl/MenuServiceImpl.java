@@ -81,4 +81,14 @@ public class MenuServiceImpl implements IMenuService {
     public int save(Menu menu) {
         return menuMapper.save(menu);
     }
+
+    @Override
+    public List<Menu> findParentMenuById(Integer menuId) {
+        return menuMapper.findParentMenuById(menuId);
+    }
+
+    @Override
+    public List<Menu> findTargetMenus() {
+        return menuMapper.findTargetMenus();
+    }
 }

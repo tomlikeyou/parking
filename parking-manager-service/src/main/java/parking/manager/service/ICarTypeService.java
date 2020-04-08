@@ -21,4 +21,5 @@ public interface ICarTypeService {
      */
     List<CarType> findCarTypes();
 
+    int save(CarType carType);
 }

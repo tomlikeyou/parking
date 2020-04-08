@@ -1,6 +1,10 @@
 package parking.manager.service;
 
-import parking.common.Order;
+import com.github.pagehelper.PageInfo;
+import parking.common.UserCar;
+import parking.common.User;
+
+import java.util.Map;
 
 /**
  * Author: huang
@@ -14,5 +18,7 @@ public interface IOrderService {
      * @param orderId
      * @return Order
      */
-    Order findOrderByKey(Integer orderId);
+    UserCar findOrderByKey(Integer orderId);
+
+    PageInfo<User> findOrdersByMap(Map<String, Object> paramMap);
 }

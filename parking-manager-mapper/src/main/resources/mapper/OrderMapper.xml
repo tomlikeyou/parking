@@ -2,7 +2,31 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="parking.manager.mapper.OrderMapper">
-    <select id="findOrderByKey" resultType="order">
-        SELECT * FROM t_user_car where
+    <resultMap id="orderMap" type="user">
+        <id property="userId" column="userId"></id>
+        <result property="userName" column="userName"></result>
+        <result property="phone" column="phone"></result>
+        <collection property="userCarList" ofType="userCar">
+            <result property="leaseStartTime" column="leaseStartTime"></result>
+            <result property="leaseEndTime" column="leaseEndTime"></result>
+            <result property="leaseStatus" column="leaseStatus"></result>
+            <result property="leaseType" column="leaseType"></result>
+            <result property="rent" column="rent"></result>
+            <association property="car" javaType="car">
+                <result property="carName" column="carName"></result>
+                <result property="carColor" column="carColor"></result>
+                <result property="carNumber" column="carNumber"></result>
+            </association>
+        </collection>
+    </resultMap>
+
+
+
+    <select id="findOrdersByMap" resultMap="orderMap">
+        SELECT u.userId,u.userName,u.phone,
+        c.carId,c.carName,c.carColor,c.carNumber,
+        uc.leaseStartTime,uc.leaseEndTime,uc.leaseStatus,uc.leaseType,uc.rent
+        FROM `t_usr_car` uc,t_user u,t_car c
+        where u.userId = uc.uId and uc.cId = c.carId
     </select>
 </mapper>

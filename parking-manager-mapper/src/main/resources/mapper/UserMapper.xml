@@ -24,30 +24,55 @@
         select * from t_user where userId = #{userId}
     </select>
 
-    <insert id="saveUser" parameterType="user">
-        insert into t_user (userName,password,phone) values(#{userName},#{password},#{phone})
+    <insert id="saveUser" parameterType="user" useGeneratedKeys="true" keyProperty="userId">
+        insert into t_user (<include refid="insertColumn"></include>) values(<include refid="insertValues"></include>)
     </insert>
+
+    <sql id="insertColumn">
+        <trim suffixOverrides=",">
+            <if test="userName!=null and userName!=''">
+                userName,
+            </if>
+            <if test="password!=null and password!=''">
+                password,
+            </if>
+            <if test="phone!=null and phone!=''">
+                phone,
+            </if>
+            <if test="remark!=null and remark!=''">
+                remark,
+            </if>
+            <if test="licenseNumber!=null and licenseNumber!=''">
+                licenseNumber,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="insertValues">
+        <trim suffixOverrides=",">
+            <if test="userName!=null and userName!=''">
+                #{userName},
+            </if>
+            <if test="password!=null and password!=''">
+                #{password},
+            </if>
+            <if test="phone!=null and phone!=''">
+                #{phone},
+            </if>
+            <if test="remark!=null and remark!=''">
+                #{remark},
+            </if>
+            <if test="licenseNumber!=null and licenseNumber!=''">
+                #{licenseNumber}
+            </if>
+        </trim>
+    </sql>
 
     <update id="updateInfo" parameterType="user">
         update  t_user set phone =#{phone},password=#{password}, remark =#{remark} where userId =#{userId}
     </update>
     <update id="update" parameterType="user">
-        update t_user set
-        <if test="userName!=null and userName!=''">
-            userName = #{userName},
-        </if>
-        <if test="password!=null and password!=''">
-            password = #{password},
-        </if>
-        <if test="phone!=null and phone!=''">
-            phone=#{phone},
-        </if>
-        <if test="remark!=null and remark!=''">
-            remark = #{remark},
-        </if>
-        <if test="userImage!=null and userImage!=''">
-            userImage=#{userImage}
-        </if>
+        update t_user set  userImage=#{userImage}
         where userId= #{userId}
     </update>
 

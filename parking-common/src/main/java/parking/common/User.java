@@ -22,12 +22,13 @@ public class User implements Serializable {
     private Integer status;
     private String remark;
     private Character deleteFlag;
-    private Character licenseNumber;
+    private String licenseNumber;
     private String userImage;
     private Set<Role> roleSet;
     private List<Menu> menuList;
     private Set<String> permList;
     private String Authorization;
+    private List<UserCar> userCarList;
 
     public void setAuthorization(Serializable id) {
         this.Authorization = (String) id;

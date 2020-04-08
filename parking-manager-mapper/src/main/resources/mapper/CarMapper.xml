@@ -25,8 +25,65 @@
         </where>
     </select>
     <insert id="insert" parameterType="car" useGeneratedKeys="true" keyProperty="carId">
-        insert into t_car (carType) values(#{carType})
+        insert into t_car (<include refid="insertColumn"></include>) values(<include refid="insertValue"></include>)
     </insert>
+    <sql id="insertColumn">
+        <trim suffixOverrides=",">
+            <if test="carName!=null and carName!=''">
+                carName,
+            </if>
+            <if test="carNumber!=null and carNumber!=''">
+                carNumber,
+            </if>
+            <if test="carTypeId!=null and carTypeId!=0">
+                carTypeId,
+            </if>
+            <if test="carImage!=null and carImage!=''">
+                carImage,
+            </if>
+            <if test="carColor!=null and carColor!=''">
+                carColor,
+            </if>
+            <if test="carRemark!=null and carRemark!=''">
+                carRemark,
+            </if>
+            <if test="dayPrice!=null and dayPrice!=0">
+                dayPrice,
+            </if>
+            <if test="monthPrice !=null and monthPrice!=0">
+                monthPrice,
+            </if>
+        </trim>
+    </sql>
+    <sql id="insertValue">
+        <trim suffixOverrides=",">
+            <if test="carName!=null and carName!=''">
+                #{carName},
+            </if>
+            <if test="carNumber!=null and carNumber!=''">
+                #{carNumber},
+            </if>
+            <if test="carTypeId!=null and carTypeId!=0">
+                #{carTypeId},
+            </if>
+            <if test="carImage!=null and carImage!=''">
+                #{carImage},
+            </if>
+            <if test="carColor!=null and carColor!=''">
+                #{carColor},
+            </if>
+            <if test="carRemark!=null and carRemark!=''">
+                #{carRemark},
+            </if>
+            <if test="dayPrice!=null and dayPrice!=0">
+                #{dayPrice},
+            </if>
+            <if test="monthPrice !=null and monthPrice!=0">
+                #{monthPrice},
+            </if>
+        </trim>
+    </sql>
+
     <update id="update" parameterType="car">
         update t_car set
         <if test="carName!=null and carName!=''">

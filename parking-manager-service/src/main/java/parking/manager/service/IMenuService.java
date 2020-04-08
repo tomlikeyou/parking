@@ -41,4 +41,9 @@ public interface IMenuService {
      * @return 更新与否标志
      */
     int save(Menu menu);
+
+    List<Menu> findParentMenuById(Integer menuId);
+
+    List<Menu> findTargetMenus();
+
 }

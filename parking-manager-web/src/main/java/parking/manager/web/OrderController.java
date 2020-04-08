@@ -1,11 +1,12 @@
 package parking.manager.web;
 
-import jdk.internal.org.objectweb.asm.tree.LdcInsnNode;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import parking.common.AjaxResultBuilder;
-import parking.common.Order;
+import parking.common.UserCar;
 import parking.common.ResultCode;
+import parking.common.User;
 import parking.manager.service.IOrderService;
 
 import java.util.HashMap;
@@ -29,21 +30,23 @@ public class OrderController {
     public Object findOrders(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
                              @RequestParam(value = "pageSize") Integer pageSize) {
         Map<String, Object> paramMap = new HashMap<>(16);
-
-        return AjaxResultBuilder.build(ResultCode.SELECT_SUCCESS, ResultCode.findMessageByCode(ResultCode.SELECT_SUCCESS), null);
+        paramMap.put("pageNum", pageNum);
+        paramMap.put("pageSize", pageSize);
+        PageInfo<User> data = orderService.findOrdersByMap(paramMap);
+        return AjaxResultBuilder.build(ResultCode.SELECT_SUCCESS, ResultCode.findMessageByCode(ResultCode.SELECT_SUCCESS), data);
     }
 
 
     @GetMapping("/order/{orderId}")
     public Object findOrderByKey(@PathVariable(value = "orderId") Integer orderId) {
-        Order order = orderService.findOrderByKey(orderId);
+        UserCar order = orderService.findOrderByKey(orderId);
         return order != null ?
                 AjaxResultBuilder.build(ResultCode.SELECT_SUCCESS, ResultCode.findMessageByCode(ResultCode.SELECT_SUCCESS), order)
                 : AjaxResultBuilder.build(ResultCode.SELECT_FAIL, ResultCode.findMessageByCode(ResultCode.SELECT_FAIL), null);
     }
 
     @PostMapping(value = "/order")
-    public Object addOrder(@RequestBody Order order) {
+    public Object addOrder(@RequestBody UserCar order) {
         return null;
     }
 

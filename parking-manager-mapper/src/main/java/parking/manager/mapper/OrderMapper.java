@@ -1,6 +1,10 @@
 package parking.manager.mapper;
 
-import parking.common.Order;
+import parking.common.UserCar;
+import parking.common.User;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Author: huang
@@ -14,5 +18,12 @@ public interface OrderMapper {
      * @param orderId
      * @return
      */
-    public Order findOrderByKey(Integer orderId);
+    public UserCar findOrderByKey(Integer orderId);
+
+    /**
+     * @description 根据参数查询订单
+     * @param paramMap
+     * @return
+     */
+    List<User> findOrdersByMap(Map<String, Object> paramMap);
 }

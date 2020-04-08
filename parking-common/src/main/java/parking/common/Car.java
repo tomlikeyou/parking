@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author huang
@@ -29,4 +30,5 @@ public class Car implements Serializable {
     private Integer dayPrice;
     private Integer monthPrice;
     private String carArea;
+    private List<UserCar> userCarList;
 }

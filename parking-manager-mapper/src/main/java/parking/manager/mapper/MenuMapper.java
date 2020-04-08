@@ -25,4 +25,8 @@ public interface MenuMapper {
     List<Menu> findMenus();
 
     int save(Menu menu);
+
+    List<Menu> findParentMenuById(Integer menuId);
+
+    List<Menu> findTargetMenus();
 }

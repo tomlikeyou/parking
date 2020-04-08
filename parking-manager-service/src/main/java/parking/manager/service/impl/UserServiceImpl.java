@@ -53,6 +53,11 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public int modifyImage(User user) {
+        return mapper.update(user);
+    }
+
+    @Override
     public int delete(Integer userId) {
         return mapper.updateFlag(userId);
     }
@@ -72,7 +77,7 @@ public class UserServiceImpl implements IUserService {
         //加密次数
         int hashIterations = 1024;
         String pwd = "123456";
-        ByteSource salt = ByteSource.Util.bytes("lisi");
+        ByteSource salt = ByteSource.Util.bytes("zhangsan");
         SimpleHash simpleHash = new SimpleHash(hashAlgorithmName, pwd, salt, hashIterations);
         System.out.println(simpleHash.toString());
     }

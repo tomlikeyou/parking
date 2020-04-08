@@ -9,6 +9,10 @@
     <select id="findMenuById" resultType="menu">
         select * from menu where menuId=#{menuId}
     </select>
+
+    <select id="findTargetMenus" resultType="menu">
+       select menuId,menuName from t_menu where url like '/%'
+    </select>
     <select id="findMenusByRoleId" resultType="menu">
         select m.* from t_role r
                 left  join t_role_menu rm on r.roleId =rm.roleId
@@ -16,12 +20,104 @@
                 where r.roleId=#{roleId}
     </select>
 
+    <select id="findParentMenuById" resultType="menu">
+        SELECT T2.menuId, T2.menuName
+        FROM (
+        SELECT
+        @r AS _id,
+        (SELECT @r := parentId FROM t_menu WHERE menuId = _id) AS parent_id,
+        @l := @l + 1 AS lvl
+        FROM
+        (SELECT @r := #{menuId}, @l := 0) vars,
+        t_menu h
+        WHERE @r >=  0) T1
+        JOIN t_menu T2
+        ON T1._id = T2.menuId
+        ORDER BY T1.lvl DESC
+    </select>
+
     <insert id="save" parameterType="menu">
-        insert  into t_menu (menu)
+        insert into t_menu (<include refid="insertColumn"></include>) values(<include refid="insertValues"></include>)
     </insert>
+    <sql id="insertColumn">
+        <trim suffixOverrides=",">
+            <if test="menuName!=null and menuName!=''">
+                menuName,
+            </if>
+            <if test="parentId!=null">
+                parentId,
+            </if>
+            <if test="perms!=null and perms!=''">
+                perms,
+            </if>
+            <if test="url!=null and url!=''">
+                url,
+            </if>
+            <if test="icon!=null and icon!=''">
+                icon,
+            </if>
+            <if test="orderNum!=null and orderNum!=0">
+                orderNum,
+            </if>
+            <if test="menuType!=null and menuType!=0">
+                menuType,
+            </if>
+        </trim>
+    </sql>
+    <sql id="insertValues">
+        <trim suffixOverrides=",">
+            <if test="menuName!=null and menuName!=''">
+                #{menuName},
+            </if>
+            <if test="parentId!=null">
+                #{parentId},
+            </if>
+            <if test="perms!=null and perms!=''">
+                #{perms},
+            </if>
+            <if test="url!=null and url!=''">
+                #{url},
+            </if>
+            <if test="icon!=null and icon!=''">
+                #{icon},
+            </if>
+            <if test="orderNum!=null and orderNum!=0">
+                #{orderNum},
+            </if>
+            <if test="menuType!=null and menuType!=0">
+                #{menuType},
+            </if>
+        </trim>
+    </sql>
     <update id="modifyMenu" parameterType="menu">
-        update menu set menuName=#{menuName}, parentId=#{parentId} where menuId=#{menuId}
+        update t_menu
+        <set>
+            <if test="menuName!=null and menuName!=''">
+                menuName=#{menuName},
+            </if>
+            <if test="parentId!=null">
+                parentId=#{parentId},
+            </if>
+            <if test="perms!=null and perms!=''">
+                perms=#{perms},
+            </if>
+            <if test="icon!=null and icon!=''">
+                icon=#{icon},
+            </if>
+            <if test="orderNum!=null and orderNum!=0">
+                orderNUm=#{orderNum},
+            </if>
+            <if test="url!=null and url!=''">
+                url=#{url},
+            </if>
+            <if test="menuType!=null and menuType!=0">
+                menuType=#{menuType},
+            </if>
+        </set>
+        where menuId=#{menuId}
     </update>
+
+
     <delete id="delete">
         delete from menu where menuId=#{menuId}
     </delete>

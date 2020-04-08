@@ -23,9 +23,21 @@ public class MenuController {
     @Autowired
     private IMenuService menuService;
 
+    @GetMapping("/targetMenus")
+    public Object findTargetMenus() {
+        List<Menu> menuList = menuService.findTargetMenus();
+        return AjaxResultBuilder.build(ResultCode.SELECT_SUCCESS, ResultCode.findMessageByCode(ResultCode.SELECT_SUCCESS), menuList);
+    }
+
     @GetMapping("/menus")
     public Object findMenus() {
         List<Menu> menuList = menuService.findMenus();
+        return AjaxResultBuilder.build(ResultCode.SELECT_SUCCESS, ResultCode.findMessageByCode(ResultCode.SELECT_SUCCESS), menuList);
+    }
+
+    @GetMapping("/menu")
+    public Object findParentMenuById(@RequestParam("menuId") Integer menuId) {
+        List<Menu> menuList = menuService.findParentMenuById(menuId);
         return AjaxResultBuilder.build(ResultCode.SELECT_SUCCESS, ResultCode.findMessageByCode(ResultCode.SELECT_SUCCESS), menuList);
     }
 
@@ -48,7 +60,8 @@ public class MenuController {
     @PutMapping("/menu")
     public Object update(@RequestBody Menu menu) {
         int updateFlag = menuService.modifyMenu(menu);
-        return null;
+        return updateFlag > 0 ? AjaxResultBuilder.build(ResultCode.EDIT_SUCCESS, ResultCode.findMessageByCode(ResultCode.EDIT_SUCCESS), updateFlag)
+                : AjaxResultBuilder.build(ResultCode.EDIT_FAIL, ResultCode.findMessageByCode(ResultCode.EDIT_FAIL), null);
     }
 
     @DeleteMapping("/menu/{menuId}")

@@ -1,6 +1,5 @@
 package parking.manager.web;
 
-import com.alibaba.druid.sql.visitor.functions.Char;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
@@ -29,6 +28,7 @@ import java.util.UUID;
  * Author: huang
  * Date: created in 2020/1/7 23:14
  * Description:
+ *
  * @author 24626
  */
 @RestController
@@ -40,11 +40,13 @@ public class UserController {
     @GetMapping(value = "/user", produces = "application/json")
     public Object getUsers(@RequestParam(value = "userName", required = false) String userName,
                            @RequestParam(value = "deleteFlag", required = false) Character deleteFlag,
+                           @RequestParam(value = "phone", required = false) String phone,
                            @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
                            @RequestParam(value = "pageSize") Integer pageSize) {
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("userName", userName);
         paramMap.put("deleteFlag", deleteFlag);
+        paramMap.put("phone", phone);
         PageHelper.startPage(pageNum, pageSize);
         List<User> users = userService.findUsersByMap(paramMap);
         PageInfo<User> userInfo = new PageInfo<>(users);
@@ -58,14 +60,22 @@ public class UserController {
         return AjaxResultBuilder.build(ResultCode.SELECT_SUCCESS, ResultCode.findMessageByCode(ResultCode.SELECT_SUCCESS), user);
     }
 
+
+    @PostMapping("/register")
+    public Object register(@RequestBody User user) {
+        return this.save(user);
+    }
+
+
     @PostMapping("/user")
     public Object save(@RequestBody User user) {
         int flag = userService.save(user);
-        return flag > 0 ? AjaxResultBuilder.build(ResultCode.SAVE_SUCCESS, ResultCode.findMessageByCode(ResultCode.SAVE_SUCCESS), user) : AjaxResultBuilder.build(ResultCode.SAVE_FAIL, ResultCode.findMessageByCode(ResultCode.SAVE_FAIL), null);
+        return flag > 0 ? AjaxResultBuilder.build(ResultCode.SAVE_SUCCESS, ResultCode.findMessageByCode(ResultCode.SAVE_SUCCESS), user)
+                : AjaxResultBuilder.build(ResultCode.SAVE_FAIL, ResultCode.findMessageByCode(ResultCode.SAVE_FAIL), null);
     }
 
     @PostMapping("/file")
-    public Object upload(@RequestParam(value = "file") MultipartFile file, HttpServletRequest request) {
+    public Object upload(@RequestParam(value = "file") MultipartFile file) {
         if (file.isEmpty()) {
             return new AjaxResult<>(ResultCode.UPLOAD_FAIL, "file should not be null", null);
         } else {
@@ -78,7 +88,6 @@ public class UserController {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-
             //拿到文件名
             String fileName = file.getOriginalFilename();
             //拿到后缀名
@@ -92,11 +101,10 @@ public class UserController {
             System.out.println(actualFile.getAbsolutePath());
             try {
                 file.transferTo(actualFile);
-                String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/file";
-                System.out.println(url);
                 //更新数据库的图片路径
                 user.setUserImage(fileName);
-                int flag = userService.modify(user);
+                System.out.println("文件名称" + fileName);
+                int flag = userService.modifyImage(user);
                 return flag > 0 ? AjaxResultBuilder.build(ResultCode.UPLOAD_SUCCESS, ResultCode.findMessageByCode(ResultCode.UPLOAD_SUCCESS), user) : AjaxResultBuilder.build(ResultCode.UPLOAD_FAIL, ResultCode.findMessageByCode(ResultCode.UPLOAD_FAIL), null);
             } catch (IOException e) {
                 e.printStackTrace();

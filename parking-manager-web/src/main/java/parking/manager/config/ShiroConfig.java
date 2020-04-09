@@ -6,7 +6,9 @@ import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.servlet.SimpleCookie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -42,11 +44,12 @@ public class ShiroConfig {
         //登录不需要权限
         map.put("/login", "anon");
         map.put("/file", "anon");
-        map.put("/images/**","anon");
+        map.put("/images/**", "anon");
         map.put("/logout", "logout");
         map.put("/user/**", "roles[admin]");
+        map.put("/role/**", "roles[admin]");
         map.put("/file/**", "roles[admin]");
-        map.put("/menu/**","roles[admin]");
+        map.put("/menu/**", "roles[admin]");
         map.put("/druid/**", "roles[admin]");
         map.put("/**", "authc");
         bean.setUnauthorizedUrl("/unauthorized");

@@ -18,5 +18,7 @@ public class Role {
     private Integer status;
     private Integer deleteFlag;
     private String remark;
+    private Integer[] menuIds;
+    private Date createTime;
     private List<Menu> menuList;
 }

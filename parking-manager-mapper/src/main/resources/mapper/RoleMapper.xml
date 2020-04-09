@@ -9,4 +9,16 @@
     where a.userId= #{userId}
     </select>
 
+    <select id="findRolesByMap" resultType="role">
+        select * from t_role
+        <where>
+            <if test="roleName!=null and roleName!=''">
+                roleName like concat('%',#{roleName},'%')
+            </if>
+        </where>
+    </select>
+
+    <insert id="saveRole" parameterType="role" useGeneratedKeys="true" keyProperty="roleId">
+        insert into t_role (roleName,remark) values(#{roleName},#{remark})
+    </insert>
 </mapper>

@@ -33,7 +33,7 @@ public class ShiroLoginController {
 
     @RequestMapping("/login")
     @ResponseBody
-    public Object login(@RequestBody User user, HttpServletRequest request) {
+    public Object login(@RequestBody User user) {
         Subject subject = SecurityUtils.getSubject();
         if (!subject.isAuthenticated()) {
             UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), user.getPassword());

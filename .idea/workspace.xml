@@ -4,11 +4,7 @@
     <option name="GROUP_BY_SEVERITY" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c65224fb-e887-4e61-a5bf-1ee83a68a552" name="Default Changelist" comment="add log4j  and CarController update findCars method">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/parking.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-common/src/main/java/parking/common/UserCar.java" afterDir="false" />
+    <list default="true" id="c65224fb-e887-4e61-a5bf-1ee83a68a552" name="Default Changelist" comment="add roleManage module">
       <change afterPath="$PROJECT_DIR$/parking-common/target/classes/parking/common/AjaxResult.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-common/target/classes/parking/common/AjaxResultBuilder.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-common/target/classes/parking/common/Car.class" afterDir="false" />
@@ -48,65 +44,21 @@
       <change afterPath="$PROJECT_DIR$/parking-manager-service/target/classes/parking/manager/service/impl/RoleServiceImpl.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-manager-service/target/classes/parking/manager/service/impl/UserServiceImpl.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-manager-service/target/classes/parking/manager/service/impl/Util.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/src/test/java/OrderServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/web/RoleController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/config/DateConverter.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/config/MyWebAppConfigurer.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/web/CarTypeController.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/web/OrderController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/aodi.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/baoma.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/bc.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/bieke.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/bl.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/bsj.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/btian.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/dazhong.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/fc31adf9-54ec-4c69-ba09-154b9a7b0412.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/fll.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/ft.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/ftian.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/jeep.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/jiebao.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/kdlk.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/link.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/lksasi.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/luhu.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/skd.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/tesila.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/xfl.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/web/RoleController.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-manager-web/target/test-classes/OrderServiceTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-common/src/main/java/parking/common/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-common/src/main/java/parking/common/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-common/src/main/java/parking/common/Order.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-common/src/main/java/parking/common/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-common/src/main/java/parking/common/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-mapper/src/main/java/parking/manager/mapper/CarTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-mapper/src/main/java/parking/manager/mapper/CarTypeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-mapper/src/main/java/parking/manager/mapper/MenuMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-mapper/src/main/java/parking/manager/mapper/MenuMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-mapper/src/main/java/parking/manager/mapper/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-mapper/src/main/java/parking/manager/mapper/OrderMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-mapper/src/main/resources/mapper/CarMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-mapper/src/main/resources/mapper/CarMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-mapper/src/main/resources/mapper/CarTypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-mapper/src/main/resources/mapper/CarTypeMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-mapper/src/main/resources/mapper/MenuMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-mapper/src/main/resources/mapper/MenuMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-mapper/src/main/resources/mapper/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-mapper/src/main/resources/mapper/OrderMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-mapper/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-mapper/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/ICarTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/ICarTypeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/IMenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/IMenuService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/IOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/IOrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/IUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/impl/CarTypeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/impl/CarTypeImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/impl/MenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/impl/MenuServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/config/DruidConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/config/DruidConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/config/MyRealm.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/config/MyRealm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/web/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/web/CarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/web/CarTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/web/CarTypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/web/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/web/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/web/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/web/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking-common/src/main/java/parking/common/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-common/src/main/java/parking/common/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking-manager-mapper/src/main/java/parking/manager/mapper/RoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-mapper/src/main/java/parking/manager/mapper/RoleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking-manager-mapper/src/main/resources/mapper/RoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-mapper/src/main/resources/mapper/RoleMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/IRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/IRoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/impl/RoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/config/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/config/ShiroConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/web/ShiroLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/web/ShiroLoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/web/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/web/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-web/src/test/java/MenuServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/src/test/java/MenuServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parking-manager-web/target/classes/META-INF/parking-manager-web.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/config/DruidConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/config/DruidConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/config/MyRealm.class" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/config/MyRealm.class" afterDir="false" />
@@ -115,7 +67,6 @@
       <change beforePath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/web/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/web/MenuController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/web/ShiroLoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/web/ShiroLoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/web/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/web/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/44a8da25-01f7-4ce7-943f-d35e30810013.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/static/images/e134d147-72bf-4670-91f0-da5ac3b69400.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parking-manager-web/target/test-classes/MenuServiceImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/target/test-classes/MenuServiceImplTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -200,7 +151,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -507,7 +458,9 @@
       <workItem from="1586154587744" duration="15230000" />
       <workItem from="1586183468609" duration="1410000" />
       <workItem from="1586224984971" duration="13977000" />
-      <workItem from="1586310692556" duration="9014000" />
+      <workItem from="1586310692556" duration="15434000" />
+      <workItem from="1586358027710" duration="2362000" />
+      <workItem from="1586409067439" duration="10320000" />
     </task>
     <task id="LOCAL-00001" summary="modify package name">
       <created>1578459379026</created>
@@ -579,7 +532,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585728098194</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add carType images and add userManage like select function&#10;add user-car list in orderManage module">
+      <created>1586335437596</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1586335437596</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +593,8 @@
     <MESSAGE value="basically finish user module and a litter of car module&#10;finish cors question ,it spend me lots of time;" />
     <MESSAGE value="add log4j  and CarController update findCars method" />
     <MESSAGE value="add dateConverter" />
-    <option name="LAST_COMMIT_MESSAGE" value="add dateConverter" />
+    <MESSAGE value="add carType images and add userManage like select function&#10;add user-car list in orderManage module" />
+    <option name="LAST_COMMIT_MESSAGE" value="add carType images and add userManage like select function&#10;add user-car list in orderManage module" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="76" key="#Inspections" timestamp="1584691735165">
@@ -644,18 +605,18 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="223" y="73" width="1164" height="688" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1586178441787" />
-    <state x="574" y="127" key="#com.intellij.ide.util.MemberChooser" timestamp="1586325163327">
+    <state x="574" y="127" key="#com.intellij.ide.util.MemberChooser" timestamp="1586443363983">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="574" y="127" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1586325163327" />
+    <state x="574" y="127" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1586443363983" />
     <state x="157" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586166623036">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="157" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.834@0.0.1536.834" timestamp="1586166623036" />
-    <state x="325" y="0" key="CommitChangelistDialog2" timestamp="1585728091298">
+    <state x="325" y="0" key="CommitChangelistDialog2" timestamp="1586444452544">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="325" y="0" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1585728091298" />
+    <state x="325" y="0" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1586444452544" />
     <state width="451" height="466" key="DebuggerActiveHint" timestamp="1583657531933">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -664,38 +625,38 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="549" y="173" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1586154702934" />
-    <state width="1493" height="351" key="GridCell.Tab.0.bottom" timestamp="1586334973987">
+    <state width="1493" height="351" key="GridCell.Tab.0.bottom" timestamp="1586443200896">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1586334973987" />
-    <state width="1493" height="351" key="GridCell.Tab.0.center" timestamp="1586334973987">
+    <state width="1493" height="351" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1586443200896" />
+    <state width="1493" height="351" key="GridCell.Tab.0.center" timestamp="1586443200895">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1586334973987" />
-    <state width="1493" height="351" key="GridCell.Tab.0.left" timestamp="1586334973986">
+    <state width="1493" height="351" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1586443200895" />
+    <state width="1493" height="351" key="GridCell.Tab.0.left" timestamp="1586443200895">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1586334973986" />
-    <state width="1493" height="351" key="GridCell.Tab.0.right" timestamp="1586334973987">
+    <state width="1493" height="351" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1586443200895" />
+    <state width="1493" height="351" key="GridCell.Tab.0.right" timestamp="1586443200895">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1586334973987" />
-    <state width="1493" height="351" key="GridCell.Tab.1.bottom" timestamp="1586334973988">
+    <state width="1493" height="351" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1586443200895" />
+    <state width="1493" height="351" key="GridCell.Tab.1.bottom" timestamp="1586443200896">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.1.bottom/0.0.1536.834@0.0.1536.834" timestamp="1586334973988" />
-    <state width="1493" height="351" key="GridCell.Tab.1.center" timestamp="1586334973988">
+    <state width="1493" height="351" key="GridCell.Tab.1.bottom/0.0.1536.834@0.0.1536.834" timestamp="1586443200896" />
+    <state width="1493" height="351" key="GridCell.Tab.1.center" timestamp="1586443200896">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.1.center/0.0.1536.834@0.0.1536.834" timestamp="1586334973988" />
-    <state width="1493" height="351" key="GridCell.Tab.1.left" timestamp="1586334973987">
+    <state width="1493" height="351" key="GridCell.Tab.1.center/0.0.1536.834@0.0.1536.834" timestamp="1586443200896" />
+    <state width="1493" height="351" key="GridCell.Tab.1.left" timestamp="1586443200896">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.1.left/0.0.1536.834@0.0.1536.834" timestamp="1586334973987" />
-    <state width="1493" height="351" key="GridCell.Tab.1.right" timestamp="1586334973988">
+    <state width="1493" height="351" key="GridCell.Tab.1.left/0.0.1536.834@0.0.1536.834" timestamp="1586443200896" />
+    <state width="1493" height="351" key="GridCell.Tab.1.right" timestamp="1586443200896">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.1.right/0.0.1536.834@0.0.1536.834" timestamp="1586334973988" />
+    <state width="1493" height="351" key="GridCell.Tab.1.right/0.0.1536.834@0.0.1536.834" timestamp="1586443200896" />
     <state width="1493" height="296" key="GridCell.Tab.2.bottom" timestamp="1584373656654">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -716,14 +677,14 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="349" y="80" key="Registry/0.0.1536.834@0.0.1536.834" timestamp="1586178427642" />
-    <state x="270" y="0" key="SettingsEditor" timestamp="1586178407541">
+    <state x="270" y="0" key="SettingsEditor" timestamp="1586335782657">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="270" y="0" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1586178407541" />
-    <state x="361" y="151" key="Vcs.Push.Dialog.v2" timestamp="1585728154607">
+    <state x="270" y="0" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1586335782657" />
+    <state x="361" y="151" key="Vcs.Push.Dialog.v2" timestamp="1586335493560">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="361" y="151" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1585728154607" />
+    <state x="361" y="151" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1586335493559" />
     <state x="562" y="335" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585727976514">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -732,10 +693,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="447" y="150" width="642" height="534" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1583764047000" />
-    <state x="482" y="209" key="git4idea.merge.GitPullDialog" timestamp="1586334988713">
+    <state x="482" y="209" key="git4idea.merge.GitPullDialog" timestamp="1586444501778">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="482" y="209" key="git4idea.merge.GitPullDialog/0.0.1536.834@0.0.1536.834" timestamp="1586334988713" />
+    <state x="482" y="209" key="git4idea.merge.GitPullDialog/0.0.1536.834@0.0.1536.834" timestamp="1586444501778" />
     <state x="38" y="56" key="new project wizard" timestamp="1585575799994">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

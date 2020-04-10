@@ -65,8 +65,9 @@ public class MenuController {
     }
 
     @DeleteMapping("/menu/{menuId}")
-    public Object delete(@PathVariable("menuId") Integer menuId) {
-        int flag = menuService.delete(menuId);
+    public Object delete(@PathVariable("menuId") Integer menuId,
+                        @RequestParam(value = "menuType")String menuType) {
+        int flag = menuService.delete(menuId,menuType);
         return flag > 0 ?
                 AjaxResultBuilder.build(ResultCode.DELETE_SUCCESS, ResultCode.findMessageByCode(ResultCode.DELETE_SUCCESS), flag)
                 : AjaxResultBuilder.build(ResultCode.DELETE_FAIL, ResultCode.findMessageByCode(ResultCode.DELETE_FAIL), null);

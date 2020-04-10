@@ -3,6 +3,7 @@ package parking.manager.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import parking.common.Menu;
+import parking.common.RoleMenuLink;
 import parking.manager.mapper.MenuMapper;
 import parking.manager.service.IMenuService;
 
@@ -44,8 +45,47 @@ public class MenuServiceImpl implements IMenuService {
     }
 
     @Override
-    public int delete(Integer menuId) {
-        return menuMapper.delete(menuId);
+    public int delete(Integer menuId, String menuType) {
+        int flag = 0;
+        //删除按钮
+        if ("0".equals(menuType)) {
+            flag = menuMapper.delete(menuId);
+            if (flag <= 0) {
+                return flag;
+            }
+        } else {
+            //要删除的是菜单
+            //先判断要删除菜单是否有子菜单
+            List<Menu> menus = menuMapper.findMenus();
+            List<Menu> menuList = buildTreeList(menus, menuId);
+            if (menuList != null && menuList.size() > 0) {
+                //有子菜单，先将子菜单的parentId设置为删除菜单的parentId,然后再删除
+                Menu menu = menuMapper.findMenuById(menuId);
+                menuList.stream().forEach((child) -> {
+                    child.setParentId(menu.getParentId());
+                    menuMapper.modifyMenu(child);
+                });
+                flag = menuMapper.delete(menuId);
+                if (flag <= 0) {
+                    return flag;
+                }
+            } else {
+                //没有子菜单
+                flag = menuMapper.delete(menuId);
+                if (flag <= 0) {
+                    return flag;
+                }
+            }
+        }
+        //查询中间表是否有对应的角色权限关系，有则再删除
+        List<RoleMenuLink> list = menuMapper.findLinkByMenuId(menuId);
+        if (list != null) {
+            list.stream().forEach((link) -> {
+                menuMapper.deleteRm(link);
+            });
+            return 1;
+        }
+        return 0;
     }
 
     @Override

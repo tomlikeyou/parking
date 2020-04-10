@@ -23,10 +23,12 @@ public interface IMenuService {
     Menu findMenuById(Integer menuId);
 
     /**
-     * @param menuId 菜单id
-     * @return 删除与否标志
+     *
+     * @param menuId
+     * @param menuType
+     * @return
      */
-    int delete(Integer menuId);
+    int delete(Integer menuId,String menuType);
 
     int modifyMenu(Menu menu);
 

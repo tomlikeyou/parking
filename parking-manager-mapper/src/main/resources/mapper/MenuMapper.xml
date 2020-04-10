@@ -7,7 +7,11 @@
         select menuId,menuName,parentId,url,icon,menuType,perms,orderNum from t_menu
     </select>
     <select id="findMenuById" resultType="menu">
-        select * from menu where menuId=#{menuId}
+        select * from t_menu where menuId=#{menuId}
+    </select>
+
+    <select id="findLinkByMenuId" resultType="roleMenuLink">
+        select roleId,menuId from t_role_menu where menuId=#{menuId}
     </select>
 
     <select id="findTargetMenus" resultType="menu">
@@ -119,6 +123,9 @@
 
 
     <delete id="delete">
-        delete from menu where menuId=#{menuId}
+        delete from t_menu where menuId=#{menuId}
+    </delete>
+    <delete id="deleteRm" parameterType="roleMenuLink">
+        delete from t_role_menu where roleId=#{roleId} and menuId=#{menuId}
     </delete>
 </mapper>

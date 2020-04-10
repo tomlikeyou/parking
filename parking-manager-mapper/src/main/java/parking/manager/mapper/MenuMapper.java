@@ -1,6 +1,7 @@
 package parking.manager.mapper;
 
 import parking.common.Menu;
+import parking.common.RoleMenuLink;
 
 import java.util.List;
 
@@ -29,4 +30,8 @@ public interface MenuMapper {
     List<Menu> findParentMenuById(Integer menuId);
 
     List<Menu> findTargetMenus();
+
+    List<RoleMenuLink> findLinkByMenuId(Integer menuId);
+
+    int deleteRm(RoleMenuLink link);
 }

@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c65224fb-e887-4e61-a5bf-1ee83a68a552" name="Default Changelist" comment="add roleManage module">
+      <change afterPath="$PROJECT_DIR$/parking-common/src/main/java/parking/common/RoleMenuLink.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-common/target/classes/parking/common/AjaxResult.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-common/target/classes/parking/common/AjaxResultBuilder.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-common/target/classes/parking/common/Car.class" afterDir="false" />
@@ -13,6 +14,7 @@
       <change afterPath="$PROJECT_DIR$/parking-common/target/classes/parking/common/ParkArea.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-common/target/classes/parking/common/ResultCode.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-common/target/classes/parking/common/Role.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parking-common/target/classes/parking/common/RoleMenuLink.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-common/target/classes/parking/common/User.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-common/target/classes/parking/common/UserCar.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-manager-mapper/target/classes/mapper/AreaMapper.xml" afterDir="false" />
@@ -50,14 +52,12 @@
       <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/web/OrderController.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/web/RoleController.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/parking-manager-web/target/test-classes/OrderServiceTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-common/src/main/java/parking/common/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-common/src/main/java/parking/common/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-mapper/src/main/java/parking/manager/mapper/RoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-mapper/src/main/java/parking/manager/mapper/RoleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-mapper/src/main/resources/mapper/RoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-mapper/src/main/resources/mapper/RoleMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/IRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/IRoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/impl/RoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/web/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/web/RoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking-manager-mapper/src/main/java/parking/manager/mapper/MenuMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-mapper/src/main/java/parking/manager/mapper/MenuMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking-manager-mapper/src/main/resources/mapper/MenuMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-mapper/src/main/resources/mapper/MenuMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/IMenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/IMenuService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/impl/MenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-service/src/main/java/parking/manager/service/impl/MenuServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/web/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/src/main/java/parking/manager/web/MenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parking-manager-web/target/classes/META-INF/parking-manager-web.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/config/DruidConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/config/DruidConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/config/MyRealm.class" beforeDir="false" afterPath="$PROJECT_DIR$/parking-manager-web/target/classes/parking/manager/config/MyRealm.class" afterDir="false" />
@@ -460,7 +460,8 @@
       <workItem from="1586310692556" duration="15434000" />
       <workItem from="1586358027710" duration="2362000" />
       <workItem from="1586409067439" duration="10567000" />
-      <workItem from="1586482525576" duration="9244000" />
+      <workItem from="1586482525576" duration="16617000" />
+      <workItem from="1586527759894" duration="354000" />
     </task>
     <task id="LOCAL-00001" summary="modify package name">
       <created>1578459379026</created>
@@ -546,7 +547,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586444569733</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="add roleManage module">
+      <created>1586514304044</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1586514304044</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -621,10 +629,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="157" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.834@0.0.1536.834" timestamp="1586166623036" />
-    <state x="325" y="0" key="CommitChangelistDialog2" timestamp="1586444566279">
+    <state x="325" y="0" key="CommitChangelistDialog2" timestamp="1586528175674">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="325" y="0" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1586444566279" />
+    <state x="325" y="0" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1586528175674" />
     <state width="451" height="466" key="DebuggerActiveHint" timestamp="1583657531933">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -633,38 +641,38 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="549" y="173" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1586154702934" />
-    <state width="1493" height="348" key="GridCell.Tab.0.bottom" timestamp="1586514189029">
+    <state width="1493" height="348" key="GridCell.Tab.0.bottom" timestamp="1586527616195">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="348" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1586514189029" />
-    <state width="1493" height="348" key="GridCell.Tab.0.center" timestamp="1586514189029">
+    <state width="1493" height="348" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1586527616195" />
+    <state width="1493" height="348" key="GridCell.Tab.0.center" timestamp="1586527616195">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="348" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1586514189029" />
-    <state width="1493" height="348" key="GridCell.Tab.0.left" timestamp="1586514189029">
+    <state width="1493" height="348" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1586527616195" />
+    <state width="1493" height="348" key="GridCell.Tab.0.left" timestamp="1586527616195">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="348" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1586514189029" />
-    <state width="1493" height="348" key="GridCell.Tab.0.right" timestamp="1586514189029">
+    <state width="1493" height="348" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1586527616195" />
+    <state width="1493" height="348" key="GridCell.Tab.0.right" timestamp="1586527616195">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="348" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1586514189029" />
-    <state width="1493" height="351" key="GridCell.Tab.1.bottom" timestamp="1586514009101">
+    <state width="1493" height="348" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1586527616195" />
+    <state width="1493" height="359" key="GridCell.Tab.1.bottom" timestamp="1586527616191">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.1.bottom/0.0.1536.834@0.0.1536.834" timestamp="1586514009101" />
-    <state width="1493" height="351" key="GridCell.Tab.1.center" timestamp="1586514009101">
+    <state width="1493" height="359" key="GridCell.Tab.1.bottom/0.0.1536.834@0.0.1536.834" timestamp="1586527616191" />
+    <state width="1493" height="359" key="GridCell.Tab.1.center" timestamp="1586527616191">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.1.center/0.0.1536.834@0.0.1536.834" timestamp="1586514009101" />
-    <state width="1493" height="351" key="GridCell.Tab.1.left" timestamp="1586514009101">
+    <state width="1493" height="359" key="GridCell.Tab.1.center/0.0.1536.834@0.0.1536.834" timestamp="1586527616191" />
+    <state width="1493" height="359" key="GridCell.Tab.1.left" timestamp="1586527616191">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.1.left/0.0.1536.834@0.0.1536.834" timestamp="1586514009101" />
-    <state width="1493" height="351" key="GridCell.Tab.1.right" timestamp="1586514009101">
+    <state width="1493" height="359" key="GridCell.Tab.1.left/0.0.1536.834@0.0.1536.834" timestamp="1586527616191" />
+    <state width="1493" height="359" key="GridCell.Tab.1.right" timestamp="1586527616191">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.1.right/0.0.1536.834@0.0.1536.834" timestamp="1586514009101" />
+    <state width="1493" height="359" key="GridCell.Tab.1.right/0.0.1536.834@0.0.1536.834" timestamp="1586527616191" />
     <state width="1493" height="296" key="GridCell.Tab.2.bottom" timestamp="1584373656654">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -689,10 +697,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="270" y="0" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1586335782657" />
-    <state x="361" y="151" key="Vcs.Push.Dialog.v2" timestamp="1586444578362">
+    <state x="361" y="151" key="Vcs.Push.Dialog.v2" timestamp="1586514323025">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="361" y="151" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1586444578362" />
+    <state x="361" y="151" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1586514323025" />
     <state x="562" y="335" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585727976514">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -701,10 +709,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="447" y="150" width="642" height="534" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1583764047000" />
-    <state x="482" y="209" key="git4idea.merge.GitPullDialog" timestamp="1586514201992">
+    <state x="482" y="209" key="git4idea.merge.GitPullDialog" timestamp="1586528105702">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="482" y="209" key="git4idea.merge.GitPullDialog/0.0.1536.834@0.0.1536.834" timestamp="1586514201992" />
+    <state x="482" y="209" key="git4idea.merge.GitPullDialog/0.0.1536.834@0.0.1536.834" timestamp="1586528105702" />
     <state x="38" y="56" key="new project wizard" timestamp="1585575799994">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

@@ -43,8 +43,26 @@ public class RoleController {
             return AjaxResultBuilder.build(ResultCode.SAVE_FAIL, ResultCode.findMessageByCode(ResultCode.SAVE_FAIL), null);
         } else {
             int flag = roleService.saveRole(role);
-            return flag > 0 ? AjaxResultBuilder.build(ResultCode.SAVE_FAIL, ResultCode.findMessageByCode(ResultCode.SAVE_FAIL), flag)
+            return flag > 0 ? AjaxResultBuilder.build(ResultCode.SAVE_SUCCESS, ResultCode.findMessageByCode(ResultCode.SAVE_SUCCESS), flag)
                     : AjaxResultBuilder.build(ResultCode.SAVE_FAIL, ResultCode.findMessageByCode(ResultCode.SAVE_FAIL), null);
         }
+    }
+
+    @PutMapping("/role/{roleId}")
+    public Object modifyFlag(@PathVariable(value = "roleId") Integer roleId) {
+
+        int flag = roleService.modifyFlag(roleId);
+        return flag > 0 ?
+                AjaxResultBuilder.build(ResultCode.EDIT_SUCCESS, ResultCode.findMessageByCode(ResultCode.EDIT_SUCCESS), flag)
+                : AjaxResultBuilder.build(ResultCode.EDIT_FAIL, ResultCode.findMessageByCode(ResultCode.EDIT_FAIL), null);
+    }
+
+    @PutMapping("/role")
+    public Object modifyRole(@RequestBody Role role){
+        int flag = roleService.modifyRole(role);
+        return flag > 0 ?
+                AjaxResultBuilder.build(ResultCode.EDIT_SUCCESS, ResultCode.findMessageByCode(ResultCode.EDIT_SUCCESS), flag)
+                : AjaxResultBuilder.build(ResultCode.EDIT_FAIL, ResultCode.findMessageByCode(ResultCode.EDIT_FAIL), null);
+
     }
 }

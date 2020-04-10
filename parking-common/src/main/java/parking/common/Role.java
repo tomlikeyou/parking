@@ -1,6 +1,8 @@
 package parking.common;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.List;
@@ -19,6 +21,8 @@ public class Role {
     private Integer deleteFlag;
     private String remark;
     private Integer[] menuIds;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
     private List<Menu> menuList;
 }

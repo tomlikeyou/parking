@@ -17,4 +17,10 @@ public interface RoleMapper {
     List<Role> findRolesByMap(Map<String, Object> map);
 
     int saveRole(Role role);
+
+    int saveRm(Map<String, Object> map);
+
+    int modifyFlag(Integer roleId);
+
+    int modifyRole(Role role);
 }

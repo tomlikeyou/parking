@@ -18,4 +18,8 @@ public interface IRoleService {
     PageInfo<Role> findRolesByMap(Map<String, Object> map);
 
     int saveRole(Role role);
+
+    int modifyFlag(Integer roleId);
+
+    int modifyRole(Role role);
 }

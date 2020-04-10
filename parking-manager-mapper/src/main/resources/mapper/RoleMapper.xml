@@ -21,4 +21,29 @@
     <insert id="saveRole" parameterType="role" useGeneratedKeys="true" keyProperty="roleId">
         insert into t_role (roleName,remark) values(#{roleName},#{remark})
     </insert>
+
+    <insert id="saveRm" parameterType="map">
+        insert into t_role_menu (roleId,menuId) values(#{roleId},#{menuId})
+    </insert>
+
+    <update id="modifyFlag">
+        update t_role set deleteFlag ='0' where roleId=#{roleId}
+    </update>
+    <update id="modifyRole" parameterType="role">
+        update t_role
+        <set>
+            <trim suffixOverrides=",">
+                <if test="roleName!=null and roleName!=''">
+                    roleName=#{roleName},
+                </if>
+                <if test="createTime!=null">
+                    createTime =#{createTime},
+                </if>
+                <if test="remark!=null and remark!=''">
+                    remark=#{remark},
+                </if>
+            </trim>
+        </set>
+        where roleId=#{roleId}
+    </update>
 </mapper>

@@ -3,6 +3,9 @@ package parking.manager.web;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.crypto.hash.Hash;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +40,13 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
+
+    @GetMapping("/users")
+    public Object findUsers() {
+        List<User> users = userService.findUsers();
+        return AjaxResultBuilder.build(ResultCode.SELECT_SUCCESS, ResultCode.findMessageByCode(ResultCode.SELECT_SUCCESS), users);
+    }
+
     @GetMapping(value = "/user", produces = "application/json")
     public Object getUsers(@RequestParam(value = "userName", required = false) String userName,
                            @RequestParam(value = "deleteFlag", required = false) Character deleteFlag,
@@ -67,6 +77,7 @@ public class UserController {
     }
 
 
+    @RequiresRoles(value = {"commonAdmin","superAdmin"},logical = Logical.OR)
     @PostMapping("/user")
     public Object save(@RequestBody User user) {
         int flag = userService.save(user);
@@ -75,11 +86,12 @@ public class UserController {
     }
 
     @PostMapping("/file")
-    public Object upload(@RequestParam(value = "file") MultipartFile file) {
+    public Object upload(@RequestParam(value = "file") MultipartFile file,
+                         @RequestParam(value = "userId") Integer userId) {
+        System.out.println(userId);
         if (file.isEmpty()) {
             return new AjaxResult<>(ResultCode.UPLOAD_FAIL, "file should not be null", null);
         } else {
-            User user = (User) SecurityUtils.getSubject().getPrincipal();
             //将图片保存到
             String realPath = null;
             try {
@@ -101,11 +113,13 @@ public class UserController {
             System.out.println(actualFile.getAbsolutePath());
             try {
                 file.transferTo(actualFile);
+                Map<String, Object> map = new HashMap<>(6);
+                map.put("userId", userId);
+                map.put("userImage", fileName);
                 //更新数据库的图片路径
-                user.setUserImage(fileName);
                 System.out.println("文件名称" + fileName);
-                int flag = userService.modifyImage(user);
-                return flag > 0 ? AjaxResultBuilder.build(ResultCode.UPLOAD_SUCCESS, ResultCode.findMessageByCode(ResultCode.UPLOAD_SUCCESS), user) : AjaxResultBuilder.build(ResultCode.UPLOAD_FAIL, ResultCode.findMessageByCode(ResultCode.UPLOAD_FAIL), null);
+                int flag = userService.modifyImage(map);
+                return flag > 0 ? AjaxResultBuilder.build(ResultCode.UPLOAD_SUCCESS, ResultCode.findMessageByCode(ResultCode.UPLOAD_SUCCESS), fileName) : AjaxResultBuilder.build(ResultCode.UPLOAD_FAIL, ResultCode.findMessageByCode(ResultCode.UPLOAD_FAIL), null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -113,12 +127,14 @@ public class UserController {
         return null;
     }
 
+    @RequiresPermissions(value = "user:update")
     @PutMapping("/user")
     public Object modify(@RequestBody User user) {
         int flag = userService.modify(user);
         return flag > 0 ? AjaxResultBuilder.build(ResultCode.EDIT_SUCCESS, ResultCode.findMessageByCode(ResultCode.EDIT_SUCCESS), flag) : AjaxResultBuilder.build(ResultCode.EDIT_FAIL, ResultCode.findMessageByCode(ResultCode.EDIT_FAIL), null);
     }
 
+    @RequiresPermissions(value = "user:delete")
     @DeleteMapping("/user/{userId}")
     public Object delete(@PathVariable("userId") Integer userId) {
         int flag = userService.delete(userId);

@@ -1,15 +1,13 @@
 package parking.manager.aop;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
 
@@ -26,11 +24,35 @@ public class WebAspect {
 
     @Pointcut(value = "execution(public  * parking.manager.web.*.*(..))")
     public void webLog() {
-
     }
 
+//    /**
+//     * 权限注解
+//     */
+//    @Pointcut(value = "@annotation(parking.manager.config.RequirePermission)")
+//    public void permission() {
+//    }
+//
+//    /**
+//     * @param joinPoint
+//     * @param requirePermission
+//     * @return
+//     * @throws Throwable
+//     */
+//    @Around(value = "permission()&&@annotation(requirePermission)")
+//    public Object aroundAdvice(ProceedingJoinPoint joinPoint, RequirePermission requirePermission) throws Throwable {
+//        System.out.println("环绕通知执行之前");
+//        String permissionName = requirePermission.permissionName();
+//        if (UserUtil.hasPermission(permissionName)) {
+//            Object r = joinPoint.proceed();
+//            System.out.println("环绕通知执行之后");
+//            return r;
+//        } else {
+//            return AjaxResultBuilder.build(ResultCode.NOPERMS, ResultCode.findMessageByCode(ResultCode.NOPERMS), null);
+//        }
+//    }
+
     /**
-     *
      * @param joinPoint 切入点
      * @throws Throwable
      */
@@ -52,4 +74,5 @@ public class WebAspect {
         // 处理完请求，返回内容
         logger.info("RESPONSE : " + ret);
     }
+
 }

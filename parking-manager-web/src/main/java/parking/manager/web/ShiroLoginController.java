@@ -49,19 +49,45 @@ public class ShiroLoginController {
         }
 
         List<Role> roles = roleService.getRolesByUserId(((User) subject.getPrincipal()).getUserId());
+        //菜单树
         List<Menu> menuList = new ArrayList<>();
+        Set<String> menuNameSet = new HashSet<>();
         roles.stream().forEach(role -> {
-            List<Menu> list = menuService.findMenusByRoleId(role.getRoleId());
-            menuList.addAll(list);
+            menuList.addAll(menuService.findMenusByRoleId(role.getRoleId()));
+            menuNameSet.addAll(menuService.findMenuNamesByRoleId(role.getRoleId()));
         });
+        Set<String> permsSet = new HashSet<>();
+        roles.stream().forEach((role) -> {
+            permsSet.addAll(menuService.findPermsByRoleId(role.getRoleId()));
+        });
+        //设置菜单树
         ((User) subject.getPrincipal()).setMenuList(menuList);
+        //返回sessionid
         ((User) subject.getPrincipal()).setAuthorization(subject.getSession().getId());
+        //返回按钮权限集
+        ((User) subject.getPrincipal()).setPermList(permsSet);
+        //返回页面权限集
+        ((User) subject.getPrincipal()).setPagePerms(menuNameSet);
+
         return (User) subject.getPrincipal();
     }
 
     @RequestMapping("/unauthorized")
     @ResponseBody
     public Object unauthorizedMethod() {
-        return new AjaxResult<>(ResultCode.LOGIN_FAIL, "current account has not been getAuthorized", null);
+        return new AjaxResult<>(ResultCode.LOGGIN_TIMEOUT, ResultCode.findMessageByCode(ResultCode.LOGGIN_TIMEOUT), null);
+    }
+
+    @RequestMapping("/unAuth")
+    @ResponseBody
+    public Object unAuth() {
+        return new AjaxResult<>(ResultCode.UNAUTH, ResultCode.findMessageByCode(ResultCode.UNAUTH), null);
+    }
+
+    @GetMapping("/logout")
+    @ResponseBody
+    public Object logout() {
+        SecurityUtils.getSubject().logout();
+        return AjaxResultBuilder.build(ResultCode.LOGOUT, ResultCode.findMessageByCode(ResultCode.LOGOUT), 1);
     }
 }

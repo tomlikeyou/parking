@@ -26,4 +26,7 @@ public interface CarTypeMapper {
     public List<CarType> findCarTypes();
 
     int insert(CarType carType);
+
+    List<CarType> findCarTypeWithCars();
+
 }

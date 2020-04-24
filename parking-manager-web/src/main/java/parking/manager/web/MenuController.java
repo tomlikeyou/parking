@@ -1,5 +1,6 @@
 package parking.manager.web;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import parking.common.AjaxResultBuilder;
@@ -49,6 +50,7 @@ public class MenuController {
                 AjaxResultBuilder.build(ResultCode.SELECT_FAIL, ResultCode.findMessageByCode(ResultCode.SELECT_FAIL), null);
     }
 
+    @RequiresPermissions(value = "menu:insert")
     @PostMapping("/menu")
     public Object save(@RequestBody Menu menu) {
         int flag = menuService.save(menu);
@@ -57,6 +59,7 @@ public class MenuController {
                 : AjaxResultBuilder.build(ResultCode.SAVE_FAIL, ResultCode.findMessageByCode(ResultCode.SAVE_FAIL), null);
     }
 
+    @RequiresPermissions(value = "menu:update")
     @PutMapping("/menu")
     public Object update(@RequestBody Menu menu) {
         int updateFlag = menuService.modifyMenu(menu);
@@ -64,6 +67,7 @@ public class MenuController {
                 : AjaxResultBuilder.build(ResultCode.EDIT_FAIL, ResultCode.findMessageByCode(ResultCode.EDIT_FAIL), null);
     }
 
+    @RequiresPermissions(value = "menu:delete")
     @DeleteMapping("/menu/{menuId}")
     public Object delete(@PathVariable("menuId") Integer menuId,
                         @RequestParam(value = "menuType")String menuType) {

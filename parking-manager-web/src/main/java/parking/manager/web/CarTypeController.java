@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import parking.common.AjaxResult;
 import parking.common.AjaxResultBuilder;
 import parking.common.CarType;
 import parking.common.ResultCode;
@@ -31,6 +32,12 @@ public class CarTypeController {
 
     @Autowired
     private ICarTypeService carTypeService;
+
+    @GetMapping("/carTypeWithCars")
+    public Object findTypeWithCars(){
+        List<CarType> carTypes = carTypeService.findCarTypeWithCars();
+        return AjaxResultBuilder.build(ResultCode.SELECT_SUCCESS,ResultCode.findMessageByCode(ResultCode.SELECT_SUCCESS),carTypes);
+    }
 
     @GetMapping("/carTypes")
     public Object findCarTypes() {

@@ -1,14 +1,14 @@
 package parking.manager.web;
 
 import com.github.pagehelper.PageInfo;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.aspectj.weaver.loadtime.Aj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import parking.common.AjaxResultBuilder;
-import parking.common.UserCar;
-import parking.common.ResultCode;
-import parking.common.User;
+import parking.common.*;
 import parking.manager.service.IOrderService;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,18 +45,31 @@ public class OrderController {
                 : AjaxResultBuilder.build(ResultCode.SELECT_FAIL, ResultCode.findMessageByCode(ResultCode.SELECT_FAIL), null);
     }
 
+    @RequiresPermissions(value = "order:insert")
     @PostMapping(value = "/order")
-    public Object addOrder(@RequestBody UserCar order) {
-        return null;
+    public Object addOrder(@RequestBody Map<String, Object> map) {
+        int flag = orderService.saveOrder(map);
+        return flag > 0 ? AjaxResultBuilder.build(ResultCode.SAVE_SUCCESS, ResultCode.findMessageByCode(ResultCode.SAVE_SUCCESS), 1)
+                : AjaxResultBuilder.build(ResultCode.SAVE_FAIL, ResultCode.findMessageByCode(ResultCode.SAVE_FAIL), null);
     }
 
-    @PutMapping("/order/{orderId}")
-    public Object modify(@PathVariable(value = "orderId") Integer orderId) {
-        return null;
+    @RequiresPermissions(value = "order:update")
+    @PutMapping("/order")
+    public Object modify(@RequestBody HashMap<String, Object> map) {
+        System.out.println(map);
+        int flag = orderService.modify(map);
+        return flag > 0 ?
+                AjaxResultBuilder.build(ResultCode.EDIT_SUCCESS, ResultCode.findMessageByCode(ResultCode.EDIT_SUCCESS), 1)
+                : AjaxResultBuilder.build(ResultCode.EDIT_FAIL, ResultCode.findMessageByCode(ResultCode.EDIT_FAIL), 0);
     }
 
-    @DeleteMapping("/order/{orderId}")
-    public Object delOrder(@PathVariable(value = "orderId") Integer orderId) {
-        return null;
+    @RequiresPermissions(value = "order:delete")
+    @DeleteMapping("/order/{userId}/{carId}")
+    public Object delOrder(@PathVariable(value = "userId") Integer userId,
+                           @PathVariable(value = "carId") Integer carId) {
+        int flag = orderService.deleteOrder(userId, carId);
+        return flag > 0 ?
+                AjaxResultBuilder.build(ResultCode.DELETE_SUCCESS, ResultCode.findMessageByCode(ResultCode.DELETE_SUCCESS), 1)
+                : AjaxResultBuilder.build(ResultCode.DELETE_SUCCESS, ResultCode.findMessageByCode(ResultCode.DELETE_FAIL), 0);
     }
 }

@@ -1,6 +1,8 @@
 package parking.manager.web;
 
 import com.github.pagehelper.PageInfo;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.hash.Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +39,7 @@ public class RoleController {
         return AjaxResultBuilder.build(ResultCode.SELECT_SUCCESS, ResultCode.findMessageByCode(ResultCode.SELECT_SUCCESS), rolePageInfo);
     }
 
+    @RequiresPermissions(value = "role:insert")
     @PostMapping("/role")
     public Object saveRole(@RequestBody Role role) {
         if (role == null) {
@@ -48,6 +51,8 @@ public class RoleController {
         }
     }
 
+
+    @RequiresPermissions(value = "role:delete")
     @PutMapping("/role/{roleId}")
     public Object modifyFlag(@PathVariable(value = "roleId") Integer roleId) {
 
@@ -57,8 +62,9 @@ public class RoleController {
                 : AjaxResultBuilder.build(ResultCode.EDIT_FAIL, ResultCode.findMessageByCode(ResultCode.EDIT_FAIL), null);
     }
 
+    @RequiresPermissions(value = {"role:update"})
     @PutMapping("/role")
-    public Object modifyRole(@RequestBody Role role){
+    public Object modifyRole(@RequestBody Role role) {
         int flag = roleService.modifyRole(role);
         return flag > 0 ?
                 AjaxResultBuilder.build(ResultCode.EDIT_SUCCESS, ResultCode.findMessageByCode(ResultCode.EDIT_SUCCESS), flag)

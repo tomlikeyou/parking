@@ -8,6 +8,8 @@ import parking.manager.mapper.MenuMapper;
 import parking.manager.service.IMenuService;
 
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * @author huang
@@ -130,5 +132,25 @@ public class MenuServiceImpl implements IMenuService {
     @Override
     public List<Menu> findTargetMenus() {
         return menuMapper.findTargetMenus();
+    }
+
+    /**
+     * @param roleId
+     * @return
+     * @description 根据角色id查询按钮权限
+     */
+    @Override
+    public Set<String> findPermsByRoleId(Integer roleId) {
+        return menuMapper.findPermsByRoleId(roleId).stream().map(Menu::getPerms).collect(Collectors.toSet());
+    }
+
+    @Override
+    public Set<String> findMenuNamesByRoleId(Integer roleId) {
+        return menuMapper.findMenusByRoleId(roleId).stream().map(Menu::getUrl).collect(Collectors.toSet());
+    }
+
+    @Override
+    public List<Menu> findMenuByRoleId(Integer roleId) {
+        return menuMapper.findMenusByRoleId(roleId);
     }
 }

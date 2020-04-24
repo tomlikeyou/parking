@@ -24,6 +24,13 @@
                 where r.roleId=#{roleId}
     </select>
 
+    <select id="findPermsByRoleId" resultType="menu">
+        select m.menuName,m.perms from t_role r
+                left  join t_role_menu rm on r.roleId =rm.roleId
+                left join t_menu m on rm.menuId=m.menuId
+                where r.roleId=#{roleId} and menuType ='2'
+    </select>
+
     <select id="findParentMenuById" resultType="menu">
         SELECT T2.menuId, T2.menuName
         FROM (

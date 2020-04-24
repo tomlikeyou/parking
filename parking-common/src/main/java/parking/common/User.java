@@ -26,6 +26,13 @@ public class User implements Serializable {
     private String userImage;
     private Set<Role> roleSet;
     private List<Menu> menuList;
+    /**
+     * 页面权限集
+     */
+    private Set<String> pagePerms;
+    /**
+     * 按钮权限集
+     */
     private Set<String> permList;
     private String Authorization;
     private List<UserCar> userCarList;

@@ -53,8 +53,8 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public int modifyImage(User user) {
-        return mapper.update(user);
+    public int modifyImage(Map<String,Object> map) {
+        return mapper.update(map);
     }
 
     @Override
@@ -70,6 +70,11 @@ public class UserServiceImpl implements IUserService {
     @Override
     public List<User> findUsersByMap(Map<String, Object> paramMap) {
         return mapper.findUsersByMap(paramMap);
+    }
+
+    @Override
+    public List<User> findUsers() {
+        return mapper.findUsers();
     }
 
     public static void main(String[] args) {

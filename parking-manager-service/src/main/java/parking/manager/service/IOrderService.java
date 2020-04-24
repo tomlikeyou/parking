@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import parking.common.UserCar;
 import parking.common.User;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -21,4 +22,10 @@ public interface IOrderService {
     UserCar findOrderByKey(Integer orderId);
 
     PageInfo<User> findOrdersByMap(Map<String, Object> paramMap);
+
+    int modify(HashMap<String, Object> map);
+
+    int deleteOrder(Integer userId, Integer carId);
+
+    int saveOrder(Map<String, Object> map);
 }

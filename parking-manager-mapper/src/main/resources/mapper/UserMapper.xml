@@ -5,6 +5,10 @@
     <select id="findUserByUserName" resultType="user">
         select * from t_user where userName = #{userName}
     </select>
+
+    <select id="findUsers" resultType="user">
+        select userId,userName from t_user
+    </select>
     <select id="findUsersByMap" parameterType="map" resultType="user">
         select * from t_user
         <where>
@@ -71,7 +75,7 @@
     <update id="updateInfo" parameterType="user">
         update  t_user set phone =#{phone},password=#{password}, remark =#{remark} where userId =#{userId}
     </update>
-    <update id="update" parameterType="user">
+    <update id="update" parameterType="map">
         update t_user set  userImage=#{userImage}
         where userId= #{userId}
     </update>

@@ -39,18 +39,20 @@ public class MyRealm extends AuthorizingRealm {
 
     /**
      * 授权
+     *
      * @param principalCollection
      * @return
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+        System.out.println("==================权限控制设置开始执行=============================");
         User user = (User) principalCollection.getPrimaryPrincipal();
         List<Role> roles = roleService.getRolesByUserId(user.getUserId());
         Set<String> roleNames = roles.stream().map(Role::getRoleName).collect(Collectors.toSet());
         Set<Integer> roleIds = roles.stream().map(Role::getRoleId).collect(Collectors.toSet());
         Set<String> menuPerms = Collections.synchronizedSet(new HashSet<>());
         for (Integer roleId : roleIds) {
-            List<Menu> list = menuService.findMenusByRoleId(roleId);
+            List<Menu> list = menuService.findMenuByRoleId(roleId);
             list.stream().map(Menu::getPerms).forEach(perm -> {
                 if (perm != null) {
                     menuPerms.add(perm);
@@ -66,11 +68,13 @@ public class MyRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         info.addRoles(roleNames);
         info.setStringPermissions(menuPerms);
+        System.out.println(info);
         return info;
     }
 
     /**
      * 认证
+     *
      * @param authenticationToken
      * @return
      * @throws AuthenticationException
@@ -93,8 +97,8 @@ public class MyRealm extends AuthorizingRealm {
     }
 
     public static void main(String[] args) {
-        String name = "admin";
-        SimpleHash hash = new SimpleHash("md5", "root", name, 1024);
+        String name = "sAdmin";
+        SimpleHash hash = new SimpleHash("md5", "123456", name, 1024);
         System.out.println(hash.toString());
     }
 }

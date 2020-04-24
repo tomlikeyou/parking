@@ -2,7 +2,9 @@ package parking.manager.service;
 
 import parking.common.Menu;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author huang
@@ -48,4 +50,14 @@ public interface IMenuService {
 
     List<Menu> findTargetMenus();
 
+    Set<String> findPermsByRoleId(Integer roleId);
+
+    Set<String> findMenuNamesByRoleId(Integer roleId);
+
+    /**
+     * @description shiro授权 根据角色id获取权限
+     * @param roleId
+     * @return
+     */
+    List<Menu> findMenuByRoleId(Integer roleId);
 }

@@ -4,7 +4,7 @@
 <mapper namespace="parking.manager.mapper.CarMapper">
 
     <select id="findCars" resultType="car">
-        select carId,carType,userId from car
+        select carId,carType from t_car
     </select>
     <select id="selectById" resultType="car">
         select carId,carType from t_car where carId=#{carId}

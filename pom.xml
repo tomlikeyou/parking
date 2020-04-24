@@ -70,10 +70,10 @@
         </dependency>
 
         <!--thymeleaf页面模板依赖-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>mysql</groupId>
@@ -98,11 +98,11 @@
             <version>1.2.5</version>
         </dependency>
         <!-- thymeleaf legacyhtml5 模式支持 -->
-        <dependency>
+        <!--<dependency>
             <groupId>net.sourceforge.nekohtml</groupId>
             <artifactId>nekohtml</artifactId>
             <version>1.9.21</version>
-        </dependency>
+        </dependency>-->
 
         <!--springboot热部署-->
         <dependency>

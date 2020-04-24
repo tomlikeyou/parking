@@ -19,11 +19,14 @@ public interface IUserService {
 
     int modify(User user);
 
-    int modifyImage(User user);
+    int modifyImage(Map<String,Object> map);
 
     int delete(Integer userId);
 
     User getUserByUserName(String userName);
 
     List<User> findUsersByMap(Map<String, Object> paramMap);
+
+    List<User> findUsers();
+    
 }

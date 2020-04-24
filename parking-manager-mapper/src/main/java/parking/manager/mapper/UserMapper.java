@@ -18,16 +18,18 @@ public interface UserMapper {
 
     int saveUser(User user);
 
-    int update(User user);
+    int update(Map<String, Object> map);
 
     int updateFlag(Integer userId);
 
     List<User> findUsersByMap(Map<String, Object> paramMap);
 
     /**
-     *
      * @param user
      * @return update flag
      */
     int updateInfo(User user);
+
+    List<User> findUsers();
+
 }

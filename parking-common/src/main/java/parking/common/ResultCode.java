@@ -6,9 +6,12 @@ package parking.common;
  * @Disc
  **/
 public enum ResultCode {
+    LOGGIN_TIMEOUT(-8,"登录超时"),
+    UNAUTH(401,"当前用户未拥有该权限"),
     UNKNOW_ERROR(0, "未知错误"),
     LOGIN_SUCCESS(1, "登录成功"),
-    LOGIN_FAIL(-1, "登陆失败"),
+    LOGIN_FAIL(-1, "登录失败"),
+    LOGOUT(200,"退出成功"),
     SELECT_SUCCESS(2, "查询成功"),
     SELECT_FAIL(-2, "查询失败"),
     EDIT_SUCCESS(3, "编辑成功"),
@@ -18,7 +21,8 @@ public enum ResultCode {
     SAVE_SUCCESS(5, "保存成功"),
     SAVE_FAIL(-5, "保存失败"),
     UPLOAD_SUCCESS(6, "上传成功"),
-    UPLOAD_FAIL(-6, "上传失败");
+    UPLOAD_FAIL(-6, "上传失败"),
+    NOPERMS(7,"无操作权限");
     private int code;
     private String message;
 

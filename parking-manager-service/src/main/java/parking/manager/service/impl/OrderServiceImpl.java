@@ -9,6 +9,7 @@ import parking.common.User;
 import parking.manager.mapper.OrderMapper;
 import parking.manager.service.IOrderService;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,5 +37,23 @@ public class OrderServiceImpl implements IOrderService {
         List<User> userList = orderMapper.findOrdersByMap(paramMap);
         PageInfo<User> userPageInfo = new PageInfo<>(userList);
         return userList != null ? userPageInfo : null;
+    }
+
+    @Override
+    public int modify(HashMap<String, Object> map) {
+        return orderMapper.modifyOrder(map);
+    }
+
+    @Override
+    public int deleteOrder(Integer userId, Integer carId) {
+        Map<String, Integer> map = new HashMap<>(5);
+        map.put("userId", userId);
+        map.put("carId", carId);
+        return orderMapper.deleteOrder(map);
+    }
+
+    @Override
+    public int saveOrder(Map<String, Object> map) {
+        return orderMapper.insertOrder(map);
     }
 }

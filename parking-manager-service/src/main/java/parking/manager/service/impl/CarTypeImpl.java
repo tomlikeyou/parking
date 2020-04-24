@@ -34,4 +34,9 @@ public class CarTypeImpl implements ICarTypeService {
     public int save(CarType carType) {
         return carTypeMapper.insert(carType);
     }
+
+    @Override
+    public List<CarType> findCarTypeWithCars() {
+        return carTypeMapper.findCarTypeWithCars();
+    }
 }

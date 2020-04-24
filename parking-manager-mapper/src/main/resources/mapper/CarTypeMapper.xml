@@ -35,4 +35,18 @@
     </select>
 
 
+    <resultMap id="carTypeWithCar" type="carType">
+        <id property="typeId" column="typeId"></id>
+        <result property="typeName" column="typeName"></result>
+        <collection property="carList" ofType="car">
+            <id property="carId" column="carId"></id>
+            <result property="carName" column="carName"></result>
+        </collection>
+    </resultMap>
+
+    <select id="findCarTypeWithCars" resultMap="carTypeWithCar">
+        select ct.typeId,ct.typeName,c.carId,c.carName from t_car_type ct left join t_car c on ct.typeId=c.carTypeId
+    </select>
+
+
 </mapper>

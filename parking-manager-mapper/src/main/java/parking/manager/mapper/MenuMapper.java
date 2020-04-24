@@ -4,6 +4,7 @@ import parking.common.Menu;
 import parking.common.RoleMenuLink;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author huang
@@ -34,4 +35,6 @@ public interface MenuMapper {
     List<RoleMenuLink> findLinkByMenuId(Integer menuId);
 
     int deleteRm(RoleMenuLink link);
+
+    List<Menu> findPermsByRoleId(Integer roleId);
 }

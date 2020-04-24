@@ -28,4 +28,8 @@ public class UserCar implements Serializable {
     private Character leaseStatus;
     private Character leaseType;
     private Integer rent;
+    /**
+     * 删除标志
+     */
+    private Character deleteFlag;
 }

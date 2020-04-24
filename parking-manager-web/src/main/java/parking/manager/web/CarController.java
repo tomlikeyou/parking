@@ -1,5 +1,6 @@
 package parking.manager.web;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +14,7 @@ import parking.manager.service.ICarService;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author huang
@@ -28,6 +27,12 @@ public class CarController {
     @Autowired
     private ICarService carService;
 
+    @GetMapping("/car")
+    public Object findCars(){
+        List<Car> cars= carService.findCars();
+        return AjaxResultBuilder.build(ResultCode.SELECT_SUCCESS,ResultCode.findMessageByCode(ResultCode.SELECT_SUCCESS),cars);
+    }
+
     @GetMapping("/cars")
     public Object getCars(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
                           @RequestParam(value = "pageSize") Integer pageSize,
@@ -39,6 +44,7 @@ public class CarController {
         return carService.findCarsByMap(map);
     }
 
+    @RequiresPermissions(value = "car:insert")
     @PostMapping("/car")
     public Object save(@RequestBody Car car) {
         int flag = carService.save(car);
@@ -55,6 +61,7 @@ public class CarController {
         return car != null ? new AjaxResult<>(ResultCode.SELECT_SUCCESS, "SELECT SUCCESS", car) : new AjaxResult<>(ResultCode.SELECT_FAIL, "SELECT ERROR", null);
     }
 
+    @RequiresPermissions(value = "car:update")
     @PutMapping(value = "/car")
     public Object modify(@RequestBody Car car) {
         int flag = carService.modify(car);
@@ -64,6 +71,7 @@ public class CarController {
 
     }
 
+    @RequiresPermissions(value = "car:delete")
     @DeleteMapping(value = "/car/{carId}")
     public Object delete(@PathVariable(value = "carId") Integer carId) {
         int flag = carService.del(carId);
